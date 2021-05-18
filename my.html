@@ -1,0 +1,16 @@
+<h1>
+    Hi Hello
+</h1>
+<script>
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: {
+            "email": "test@mail.com",
+            "password": "12345678"
+        }
+    };
+    fetch('https://zwajni.com/api/users/login', requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data));
+</script>

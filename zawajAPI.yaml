@@ -476,22 +476,7 @@ definitions:
         type: string
         description: Tsting Desc
       price:
-        type: integer
-        
-  Usk:          
-    type: object
-    required:
-      - name
-      - description
-      - price
-    properties:
-      name:
-        type: string
-      description:
-        type: string
-        description: Tsting Desc
-      price:
-        type: integer
+        type: integer   
         
   User:          
     type: object
