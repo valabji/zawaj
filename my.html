@@ -10,6 +10,7 @@
             "password": "12345678"
         }
     };
+    
     fetch('https://zwajni.com/api/users/login', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data));
