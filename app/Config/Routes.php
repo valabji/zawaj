@@ -37,6 +37,8 @@ $routes->setAutoRoute(true);
 
 $routes->group('api', ['namespace' => 'App\Controllers\API'], function($routes)
 {
+    $routes->options('(:any)', 'Index::options');
+
     $routes->get('settings','Settings::index');
     $routes->post('settings','Settings::create');
     $routes->patch('settings/(:num)','Settings::update/$1');
