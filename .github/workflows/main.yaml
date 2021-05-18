@@ -14,4 +14,4 @@ jobs:
         server: ftp.zwajni.com
         username: github@zwajni.com
         password: ${{ secrets.ftp_password }}
-        server-dir: public_html/
+        server-dir: /
