@@ -1,9 +1,9 @@
 <?php
-namespace App\Controllers\API;
-header('Content-Type: application/json');
+namespace App\Controllers;
+/* header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, DELETE');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, DELETE'); */
 // require APPPATH . '/Libraries/REST_Controller.php';
 // use Restserver\Libraries\REST_Controller;
 use CodeIgniter\RESTful\ResourceController;

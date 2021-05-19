@@ -34,6 +34,12 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 
+$routes->get('users','Users::index');
+$routes->post('users','Users::create');
+$routes->patch('users/(:num)','Users::update/$1');
+$routes->delete('users/(:num)','Users::delete/$1');
+$routes->post('users/login','Users::login');
+$routes->options('(:any)', 'Users::options');
 
 $routes->group('api', ['namespace' => 'App\Controllers\API'], function($routes)
 {
@@ -43,12 +49,6 @@ $routes->group('api', ['namespace' => 'App\Controllers\API'], function($routes)
     $routes->patch('settings/(:num)','Settings::update/$1');
     $routes->delete('settings/(:num)','Settings::delete/$1');
 
-    $routes->get('users','Users::index');
-    $routes->post('users','Users::create');
-    $routes->patch('users/(:num)','Users::update/$1');
-    $routes->delete('users/(:num)','Users::delete/$1');
-    $routes->post('users/login','Users::login');
-    $routes->options('(:any)', 'Users::options');
     // OPTIONS
 
     $routes->get('city','City::index');
