@@ -48,7 +48,7 @@ $routes->group('api', ['namespace' => 'App\Controllers\API'], function($routes)
     $routes->patch('users/(:num)','Users::update/$1');
     $routes->delete('users/(:num)','Users::delete/$1');
     $routes->post('users/login','Users::login');
-    $routes->options('(:any)', 'Users::options');
+    // $routes->options('(:any)', 'Users::options');
     // OPTIONS
 
     $routes->get('city','City::index');
