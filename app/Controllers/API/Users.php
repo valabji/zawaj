@@ -196,7 +196,7 @@ class Users extends ResourceController
     {
         return $this->response->setHeader('Access-Control-Allow-Origin', '*') //for allow any domain, insecure
             ->setHeader('Access-Control-Allow-Headers', '*') //for allow any headers, insecure
-            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE') //method allowed
+            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT,PATCH, DELETE') //method allowed
             ->setStatusCode(200); //status code
     }
 }
