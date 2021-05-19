@@ -37,7 +37,6 @@ $routes->setAutoRoute(true);
 
 $routes->group('api', ['namespace' => 'App\Controllers\API'], function($routes)
 {
-    $routes->options('(:any)', 'Index::options');
 
     $routes->get('settings','Settings::index');
     $routes->post('settings','Settings::create');
@@ -49,6 +48,7 @@ $routes->group('api', ['namespace' => 'App\Controllers\API'], function($routes)
     $routes->patch('users/(:num)','Users::update/$1');
     $routes->delete('users/(:num)','Users::delete/$1');
     $routes->post('users/login','Users::login');
+    $routes->options('(:any)', 'Users::options');
 
     $routes->get('city','City::index');
     $routes->post('city','City::create');
