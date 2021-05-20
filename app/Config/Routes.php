@@ -41,25 +41,24 @@ $routes->delete('users/(:num)','Users::delete/$1');
 $routes->post('users/login','Users::login');
 // $routes->options('(:any)', 'Users::options');
 
+$routes->get('settings','Settings::index');
+$routes->post('settings','Settings::create');
+$routes->patch('settings/(:num)','Settings::update/$1');
+$routes->delete('settings/(:num)','Settings::delete/$1');
+
+$routes->get('city','City::index');
+$routes->post('city','City::create');
+$routes->patch('city/(:num)','City::update/$1');
+$routes->delete('city/(:num)','City::delete/$1');
+
+$routes->get('bundles','Bundles::index');
+$routes->post('bundles','Bundles::create');
+$routes->patch('bundles/(:num)','Bundles::update/$1');
+$routes->delete('bundles/(:num)','Bundles::delete/$1');
+
 $routes->group('api', ['namespace' => 'App\Controllers\API'], function($routes)
 {
 
-    $routes->get('settings','Settings::index');
-    $routes->post('settings','Settings::create');
-    $routes->patch('settings/(:num)','Settings::update/$1');
-    $routes->delete('settings/(:num)','Settings::delete/$1');
-
-    // OPTIONS
-
-    $routes->get('city','City::index');
-    $routes->post('city','City::create');
-    $routes->patch('city/(:num)','City::update/$1');
-    $routes->delete('city/(:num)','City::delete/$1');
-
-    $routes->get('bundles','Bundles::index');
-    $routes->post('bundles','Bundles::create');
-    $routes->patch('bundles/(:num)','Bundles::update/$1');
-    $routes->delete('bundles/(:num)','Bundles::delete/$1');
 });
 
 

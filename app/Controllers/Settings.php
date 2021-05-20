@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\API;
+namespace App\Controllers;
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
@@ -8,7 +8,7 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, DELETE');
 // use Restserver\Libraries\REST_Controller;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\CityModel;
+use App\Models\SettingsModel;
 
 class Settings extends ResourceController
 {
@@ -16,7 +16,7 @@ class Settings extends ResourceController
 
     public function index()
     {
-        $st = new CityModel();
+        $st = new SettingsModel();
         $data = $st->findAll();
         http_response_code(200);
         $res = [
@@ -28,9 +28,10 @@ class Settings extends ResourceController
     public function create()
     {
         $data = [
-            'name' => $this->request->getVar("name")
+            'name' => $this->request->getVar("name"),
+            'value' => $this->request->getVar("value")
         ];
-        $st = new CityModel();
+        $st = new SettingsModel();
         $ok = $st->save($data);
         http_response_code(200);
         $res = [
@@ -42,9 +43,10 @@ class Settings extends ResourceController
     public function update($id = null)
     {
         $data = [
-            'name' => $this->request->getVar("name")
+            'name' => $this->request->getVar("name"),
+            'value' => $this->request->getVar("value")
         ];
-        $st = new CityModel();
+        $st = new SettingsModel();
         $ok = $st->update($id,$data);
         http_response_code(200);
         $res = [
@@ -56,7 +58,11 @@ class Settings extends ResourceController
 
     public function delete($id = null)
     {
-        $st = new CityModel();
+        $data = [
+            'name' => $this->request->getVar("name"),
+            'value' => $this->request->getVar("value")
+        ];
+        $st = new SettingsModel();
         $ok = $st->delete($id);
         http_response_code(200);
         $res = [
