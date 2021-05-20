@@ -10,7 +10,7 @@ use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\CityModel;
 
-class Settings extends ResourceController
+class City extends ResourceController
 {
     use ResponseTrait;
 
