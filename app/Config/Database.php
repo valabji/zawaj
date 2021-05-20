@@ -32,10 +32,10 @@ class Database extends Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '12345678',
-		'database' => 'zawijni',
+		'hostname' => 'zwajni.com',
+		'username' => 'wfqfxrim_wfqfxrim',
+		'password' => 'F7G0Ox8M5qH4',
+		'database' => 'wfqfxrim_zawijni',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
