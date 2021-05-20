@@ -35,6 +35,7 @@ class City extends ResourceController
         http_response_code(200);
         $res = [
             'success' => $ok,
+            'data' => $data,
             'msg' => 'Data Created'
         ];
         return $this->response->setJSON($res);
