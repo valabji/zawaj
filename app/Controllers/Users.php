@@ -119,6 +119,7 @@ class Users extends ResourceController
             'success' => $ok,
             'msg' => 'Data Updated',
         ];
+        $this->response->setHeader('Access-Control-Allow-Origin: *');
         return $this->response->setJSON($res);
     }
 
