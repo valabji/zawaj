@@ -119,7 +119,7 @@ class Users /* extends ResourceController */
             'success' => $ok,
             'msg' => 'Data Updated',
         ];
-        $this->response->setHeader('Access-Control-Allow-Origin: *');
+        
         return $this->response->setJSON($res);
     }
 
@@ -193,7 +193,7 @@ class Users /* extends ResourceController */
         return $this->response->setJSON($res);
     }
 
-    public function options(): Response
+    public function options()/* : Response */
     {
         return $this->response->setHeader('Access-Control-Allow-Origin', '*') //for allow any domain, insecure
             ->setHeader('Access-Control-Allow-Headers', '*') //for allow any headers, insecure
