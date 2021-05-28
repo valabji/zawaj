@@ -6,13 +6,13 @@ header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, DELETE');
 // require APPPATH . '/Libraries/REST_Controller.php';
 // use Restserver\Libraries\REST_Controller;
-// use CodeIgniter\RESTful\ResourceController;
-// use CodeIgniter\API\ResponseTrait;
+use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
 use App\Models\UserModel;
 // F7G0Ox8M5qH4
-class Users /* extends ResourceController */
+class Users extends ResourceController
 {
-    // use ResponseTrait;
+    use ResponseTrait;
 
     public function index()
     {
@@ -119,7 +119,6 @@ class Users /* extends ResourceController */
             'success' => $ok,
             'msg' => 'Data Updated',
         ];
-        
         return $this->response->setJSON($res);
     }
 
@@ -193,7 +192,7 @@ class Users /* extends ResourceController */
         return $this->response->setJSON($res);
     }
 
-    public function options()/* : Response */
+    public function options(): Response
     {
         return $this->response->setHeader('Access-Control-Allow-Origin', '*') //for allow any domain, insecure
             ->setHeader('Access-Control-Allow-Headers', '*') //for allow any headers, insecure
