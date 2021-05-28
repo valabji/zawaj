@@ -39,7 +39,7 @@ $routes->post('users','Users::create');
 $routes->patch('users/(:num)','Users::update/$1');
 $routes->delete('users/(:num)','Users::delete/$1');
 $routes->post('users/login','Users::login');
-// $routes->options('users/(:num)', 'Users::options');
+$routes->options('(:any)', 'Users::options');
 
 $routes->get('settings','Settings::index');
 $routes->post('settings','Settings::create');
