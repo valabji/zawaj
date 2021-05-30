@@ -77,7 +77,7 @@ angular.module("myApp")
             $scope.OpenModal(ModalName)
             $scope.bundle_id = bundle.id
             $scope.update_name = bundle.name
-            $scope.update_price = bundle.price
+            $scope.update_price = parseInt(bundle.price)
             $scope.update_description = bundle.description
         }
 
