@@ -83,7 +83,7 @@ phpunit
 #-------------------------
 # Composer
 #-------------------------
-vendor/
+api/vendor/
 
 #-------------------------
 # IDE / Development Files
@@ -116,7 +116,7 @@ nb-configuration.xml
 *.sublime-workspace
 *.sublime-project
 .phpintel
-/api/
+#/api/
 
 # Visual Studio Code
 .vscode/
