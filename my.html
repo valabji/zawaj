@@ -7,10 +7,11 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             "email": "test@mail.com",
-            "password": "12345678"
+            "password": "12345678",
+            "gender":"Female"
         })
     };
-    fetch('https://api.zwajni.com/users/5', requestOptions)
+    fetch('https://zwajni.com/api/users/5', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data)).catch(e=>console.log(e))
 </script>
