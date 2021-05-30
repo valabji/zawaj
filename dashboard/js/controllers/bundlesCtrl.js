@@ -70,6 +70,29 @@ angular.module("myApp")
             })
 
         }
+
+
+
+        $scope.ConfirmeUpdateBundle = function (bundle,ModalName) {
+            $scope.OpenModal(ModalName)
+            $scope.bundle_id = bundle.id
+            $scope.update_name = bundle.name
+            $scope.update_price = bundle.price
+            $scope.update_description = bundle.description
+        }
+
+
+        $scope.UpdateBundle = function (ModalName) {
+            if ($scope.update_name && $scope.update_price && $scope.update_description) {
+                $http.patch(API_URL + "bundles/" + $scope.bundle_id, {
+                    name : $scope.update_name,
+                    price: $scope.update_price,
+                    description : $scope.update_description
+                }).then(function (resp) {
+                    console.log(resp)
+                })
+            }
+        }
             
     
     })
