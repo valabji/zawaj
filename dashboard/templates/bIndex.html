@@ -1,0 +1,148 @@
+﻿
+<div class="content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">إدارة باقات الأشتراك </h4>
+                    <input type="button" class="btn btn-success btn-sm" ng-click="OpenModal('#AddBundle')" style="float:left;margin-top: -34px;margin-bottom: -20px;" value="إضافة باقة">
+                </div>
+                <div class="card-body">
+                    <br />
+                    <div class="table-responsive">
+                        <table datatable="ng" dt-options="vm.dtOptions"  class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th style="text-align:center">
+                                        الكود
+                                    </th>
+                                    <th style="text-align:center">
+                                        اسم الباقة
+                                    </th>
+                                    <th style="text-align:center">
+                                        سعر الاشتراك 
+                                    </th>
+                                    <th style="text-align:center">
+                                        مدة الاشتراك
+                                    </th>
+                                    <th style="text-align:center">
+                                        إجراءات
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="bundle in bundles">
+                                    <td>
+                                        {{bundle.id}}
+                                    </td>
+                                    <td>
+                                        {{bundle.name}}
+                                    </td>
+                                    <td>
+                                        {{bundle.price}}$
+                                    </td>
+                                    <td>
+                                        Oud-Turnhout
+                                    </td>
+                                    <td>
+                                        <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                                        <a ng-click="ConfirmeDelBundle(bundle.id,'#DelBundle')"><i class="fa fa-trash fa-lg text-danger"></i></a>
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+<!-- Add Bunble-->
+<div class="modal" id="AddBundle" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">إضافة باقة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" ng-model="name" placeholder="إسم الباقة">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input class="form-control" type="number" ng-model="price" placeholder="سعر الباقة">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <textarea class="form-control" cols="10" ng-model="description" rows="5" placeholder="نص الرسالة ..."></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success btn-block" ng-click="AddBundle('#AddBundle')">حفظ</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Bunble-->
+
+
+
+<!-- Del Bunble-->
+<div class="modal" id="DelBundle" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title">حذف باقة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <p>sdsd?</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-danger btn-block" ng-click="DelBundle('#DelBundle')">حفظ</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Del Bunble-->
+

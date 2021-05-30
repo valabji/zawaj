@@ -1,0 +1,552 @@
+﻿<!DOCTYPE html>
+<html lang="ar-eg" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/logo.png">
+  <link rel="icon" type="image/png" href="../assets/img/logo.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+   تطبيق مستشار البناء - لوحة التحكم
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
+  />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+  />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+  <!-- Markazi Text font include just for persian demo purpose, don't include it in your project -->
+  <link href="https://fonts.googleapis.com/css?family=Cairo&amp;subset=arabic" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <link href="../assets/css/material-dashboard-rtl.css?v=1.1" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="../assets/css/style.css" rel="stylesheet" />
+
+  <!-- Style Just for persian demo purpose, don't include it in your project -->
+  <style>
+
+      th {
+          color: black;
+          text-align: center;
+      }
+
+      a {
+          color: #ffa726;
+      }
+
+          a:hover {
+              color: #ffa726;
+          }
+
+      td {
+          text-align: center;
+      }
+
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6, select, option,
+      .h1,
+      .h2,
+      .h3,
+      .h4 {
+          font-family: "Cairo" !important;
+      }
+
+      .sidebar .logo
+      {
+          padding:0 0 0 0 !important;
+      }
+  </style>
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo">
+        <a href="#" class="simple-text logo-normal">
+          <img src="../assets/img/logo.png" style="width:70px;" />
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="Index.html">
+                    <i class="material-icons">dashboard</i>
+                    <p>
+                      إدارة الشركات
+                    </p>
+                </a>
+            </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="bIndex.html">
+              <i class="fa fa-book"></i>
+              <p>
+                 إدارة باقات الأشتراك
+              </p>
+            </a>
+          </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="TIndex.html">
+                    <i class="material-icons">content_paste</i>
+                    <p>طلبات عروض الأسعار </p>
+                </a>
+            </li>
+          
+            <li class="nav-item active">
+                <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
+                    <i class="material-icons">library_books</i>
+                    <p>
+                        إدارة الأعضاء
+                    </p>
+                </a>
+                <div class="collapse" id="pagesExamples">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="A3da2Index.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>الأعضاء </p>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="SearchIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>باحث عن وظيفة </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="UserIndex.html">
+                    <i class="fa fa-users"></i>
+                    <p> إدارة المستخدمين </p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#pagesExamples2">
+                    <i class="material-icons">library_books</i>
+                    <p>
+                       الوظائف
+                    </p>
+                </a>
+                <div class="collapse" id="pagesExamples2">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="JobResquestIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>عروض الوظائف </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="JobResquest2Index.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>طلبات التوظيف </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="NoIndex.html">
+              <i class="material-icons">content_paste</i>
+              <p>
+                  الأشعارات
+              </p>
+            </a>
+          </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="CompIndex.html">
+                    <i class="fa fa-book"></i>
+                    <p> الأستفسارات و الشكاوي  </p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#pagesExamples3">
+                    <i class="fa fa-cogs"></i>
+                    <p>أعدادات التطبيق</p>
+
+                </a>
+                <div class="collapse" id="pagesExamples3">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="  CatIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>أدارة الأقسام </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ImageIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>الخلفيات و البانرات</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="CityIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>المدن</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="AboutIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>عن التطبيق</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="SocialIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>وسائل التواصل</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ServIndex.html">
+                                <i class="fa fa-dot-circle-o"></i>
+                                <p>سياسة الخصوصية</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+          
+           
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="#pablo">مستشار البناء لوحة المدير </a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="بحث...">
+                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+            <ul class="navbar-nav">
+              
+              
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons">person</i>
+                        <p class="d-lg-none d-md-block">
+                            حساب کاربری
+                        </p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
+                        <a class="dropdown-item" href="#">تعديل الملف الشخصي</a>
+                        <a class="dropdown-item" href="#">تسجيل الخروج</a>
+                    </div>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">باحث عن وظيفة </h4>
+
+                        </div>
+                        <div class="card-body">
+                            <br />
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th style="text-align:center">
+                                               الكود
+                                            </th>
+                                            <th style="text-align:center">
+                                                الاسم
+                                            </th>
+                                            <th style="text-align:center">
+                                                رقم الجوال
+                                            </th>
+                                            <th style="text-align:center">
+                                                الجنس
+                                            </th>
+                                            <th style="text-align:center">
+                                                الجنسية
+                                            </th>
+                                            <th style="text-align:center">
+                                                الشهادة
+                                            </th>
+                                            <th style="text-align:center">
+                                                المجال
+                                            </th>
+                                            <th style="text-align:center">
+                                                التخصص
+                                            </th>
+                                            <th style="text-align:center">
+                                                سنوات الخبرة
+                                            </th>
+                                            <th style="text-align:center">
+                                                ملف السيرة الذاتية
+                                            </th>
+                                            <th style="text-align:center">
+                                                إجراءات
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                               محمد فهد الدوسري
+                                            </td>
+                                            <td>
+                                                +966509999900
+                                            </td>
+                                            <td>
+                                                ذكر
+                                            </td>
+                                            <td>
+                                                سعودي
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                مهندس مدني
+                                            </td>
+                                            <td>
+                                                test
+                                            </td>
+                                            <td>
+                                                4 سنوات
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-eye fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-trash fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                محمد فهد الدوسري
+                                            </td>
+                                            <td>
+                                                +966509999900
+                                            </td>
+                                            <td>
+                                                ذكر
+                                            </td>
+                                            <td>
+                                                سعودي
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                مهندس مدني
+                                            </td>
+                                            <td>
+                                                test
+                                            </td>
+                                            <td>
+                                                4 سنوات
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-eye fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-trash fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                محمد فهد الدوسري
+                                            </td>
+                                            <td>
+                                                +966509999900
+                                            </td>
+                                            <td>
+                                                ذكر
+                                            </td>
+                                            <td>
+                                                سعودي
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                مهندس مدني
+                                            </td>
+                                            <td>
+                                                test
+                                            </td>
+                                            <td>
+                                                4 سنوات
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-eye fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-trash fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                محمد فهد الدوسري
+                                            </td>
+                                            <td>
+                                                +966509999900
+                                            </td>
+                                            <td>
+                                                ذكر
+                                            </td>
+                                            <td>
+                                                سعودي
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                مهندس مدني
+                                            </td>
+                                            <td>
+                                                test
+                                            </td>
+                                            <td>
+                                                4 سنوات
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-eye fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-trash fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                محمد فهد الدوسري
+                                            </td>
+                                            <td>
+                                                +966509999900
+                                            </td>
+                                            <td>
+                                                ذكر
+                                            </td>
+                                            <td>
+                                                سعودي
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                مهندس مدني
+                                            </td>
+                                            <td>
+                                                test
+                                            </td>
+                                            <td>
+                                                4 سنوات
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-file"></i> تحميل</a>
+                                            </td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-eye fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-edit fa-lg"></i></a>
+                                                <a href="#"><i class="fa fa-trash fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+      </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chartist JS -->
+    <script src="../assets/js/plugins/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
+
+      });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,914 @@
+﻿<!DOCTYPE html>
+<html lang="ar-eg" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/logo.png">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        تطبيق مستشار البناء - لوحة التحكم
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <!-- Markazi Text font include just for persian demo purpose, don't include it in your project -->
+    <link href="https://fonts.googleapis.com/css?family=Cairo&amp;subset=arabic" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+    <link href="../assets/css/material-dashboard-rtl.css?v=1.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+
+    <!-- Style Just for persian demo purpose, don't include it in your project -->
+    <style>
+                th {
+                    color: black;
+                    text-align: center;
+                }
+
+                a {
+                    color: #ffa726;
+                }
+
+                    a:hover {
+                        color: #ffa726;
+                    }
+
+                td {
+                    text-align: center;
+                }
+
+                body,
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6, select, option,
+                .h1,
+                .h2,
+                .h3,
+                .h4 {
+                    font-family: "Cairo" !important;
+                }
+
+                .sidebar .logo {
+                    padding: 0 0 0 0 !important;
+                }
+
+                /*
+        LESS Document
+        Author: Jacob Scott
+        Created: 11-14-15
+        Modified: 12-16-15
+        */
+
+
+
+
+                .editor-controls {
+                    display: block;
+                    padding-top: 6px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    background-color: #bbbbbb;
+                    box-shadow: 3px 3px 10px rgba(0,0,0,0.35);
+                }
+
+                    .editor-controls .button-group {
+                        display: inline-block;
+                        margin: 0 2px;
+                    }
+
+
+                .editor-richText-box {
+                    width: 100%;
+                    min-height: 380px;
+                    border: 2px solid #cccccc;
+                    background-color: #efefef;
+                    font-family: 'Open Sans', helvetica, arial, sans-serif;
+                    word-break: break-word;
+                    word-wrap: normal;
+                    padding: 16px;
+                    box-shadow: 3px 3px 10px rgba(0,0,0,0.35);
+                }
+
+                .editor-text-box {
+                    font-family: 'Open Sans', helvetica, arial, sans-serif;
+                    word-break: break-word;
+                    word-wrap: normal;
+                }
+
+                .rte.button {
+                    display: block;
+                    float: left;
+                    padding: 6px;
+                    margin: 6px;
+                    text-align: center;
+                    &:hover
+
+                {
+                    cursor: pointer;
+                }
+
+                }
+
+                .rte.main.button {
+                    color: white;
+                    padding: 6px 12px;
+                    margin: 6px;
+                    background-color: #2676d5;
+                    border: 1px solid #1d5aa3;
+                    font-weight: bold;
+                    border-radius: 5px;
+                    &:hover
+
+                {
+                    background-color: #3a3a3a;
+                    border-color: #1a1a1a;
+                }
+
+                &.fileUpload {
+                    position: relative;
+                    overflow: hidden;
+                    cursor: pointer;
+                    input [type='file']
+
+                {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 0;
+                    opacity: 0;
+                    display: block;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 20px;
+                    right: 0;
+                }
+
+                }
+                }
+
+                .rte.editor.button {
+                    color: #1a1a1a;
+                    background-color: #eeeeee;
+                    font-weight: bold;
+                    margin: 0;
+                    height: 34px;
+                    &:hover
+
+                {
+                    background-color: #3a3a3a;
+                    border-color: #1a1a1a;
+                    color: white;
+                }
+
+                &:first-of-type {
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                }
+
+                &:last-of-type {
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+
+                }
+
+                .rte.editor.dropdown {
+                    display: block;
+                    float: left;
+                    padding: 5px;
+                    margin: 6px;
+                    height: 34px;
+                    text-align: center;
+                    color: #1a1a1a;
+                    background-color: #eeeeee;
+                    font-weight: bold;
+                    border-radius: 5px;
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0;
+                    display: inline-block;
+                    margin: 0 0px;
+                    margin-left: 0;
+                    &:hover
+
+                {
+                    cursor: pointer;
+                    //background-color: #3a3a3a;
+                    border-color: #1a1a1a;
+                    //color: white;
+                }
+
+                option {
+                    background-color: inherit;
+                    font-weight: bold;
+                }
+
+                }
+
+                .rte.editor.dropdown-label {
+                    color: #1a1a1a;
+                    background-color: #eeeeee;
+                    font-weight: bold;
+                    margin: 0;
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+                    display: block;
+                    float: left;
+                    padding: 6px;
+                    margin: 0;
+                    text-align: center;
+                }
+
+                .rte.editor.dropdown#fontFamily {
+                    width: 150px;
+                    font-weight: normal;
+                }
+    </style>
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="white">
+            <!--
+                Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+                Tip 2: you can also add an image using data-image tag
+            -->
+            <div class="logo">
+                <a href="#" class="simple-text logo-normal">
+                    <img src="../assets/img/logo.png" style="width:70px;" />
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="Index.html">
+                            <i class="material-icons">dashboard</i>
+                            <p>
+                                إدارة الشركات
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="bIndex.html">
+                            <i class="fa fa-book"></i>
+                            <p>
+                                إدارة باقات الأشتراك
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="TIndex.html">
+                            <i class="material-icons">content_paste</i>
+                            <p>طلبات عروض الأسعار </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
+                            <i class="material-icons">library_books</i>
+                            <p>
+                                إدارة الأعضاء
+                            </p>
+                        </a>
+                        <div class="collapse" id="pagesExamples">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="A3da2Index.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>الأعضاء </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="SearchIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>باحث عن وظيفة </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="UserIndex.html">
+                            <i class="fa fa-users"></i>
+                            <p> إدارة المستخدمين </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" data-toggle="collapse" href="#pagesExamples2">
+                            <i class="material-icons">library_books</i>
+                            <p>
+                                الوظائف
+                            </p>
+                        </a>
+                        <div class="collapse" id="pagesExamples2">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="JobResquestIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>عروض الوظائف </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="JobResquest2Index.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>طلبات التوظيف </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="NoIndex.html">
+                            <i class="material-icons">content_paste</i>
+                            <p>
+                                الأشعارات
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="CompIndex.html">
+                            <i class="fa fa-book"></i>
+                            <p> الأستفسارات و الشكاوي  </p>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" data-toggle="collapse" href="#pagesExamples3">
+                            <i class="fa fa-cogs"></i>
+                            <p>أعدادات التطبيق</p>
+
+                        </a>
+                        <div class="collapse" id="pagesExamples3">
+                            <ul class="nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="  CatIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>أدارة الأقسام </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="ImageIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>الخلفيات و البانرات</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="CityIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>المدن</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="AboutIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>عن التطبيق</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="SocialIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>وسائل التواصل</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="ServIndex.html">
+                                        <i class="fa fa-dot-circle-o"></i>
+                                        <p>سياسة الخصوصية</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="#pablo">مستشار البناء لوحة المدير </a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <form class="navbar-form">
+                            <div class="input-group no-border">
+                                <input type="text" value="" class="form-control" placeholder="بحث...">
+                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                    <i class="material-icons">search</i>
+                                    <div class="ripple-container"></div>
+                                </button>
+                            </div>
+                        </form>
+                        <ul class="navbar-nav">
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">person</i>
+                                    <p class="d-lg-none d-md-block">
+                                        حساب کاربری
+                                    </p>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
+                                    <a class="dropdown-item" href="#">تعديل الملف الشخصي</a>
+                                    <a class="dropdown-item" href="#">تسجيل الخروج</a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title" style="text-align:center;">سياسة الخصوصية</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+
+
+
+                                        <div class="row rowT">
+                                            <div class="col-md-12">
+                                                <button type="submit" class="btn btn-primary pull-left">حفظ</button>
+                                                <button type="submit" class="btn btn-light pull-left">ألغاء</button>
+
+                                                <div class="wrapper" style="display: block; width: 75%; margin: 96px auto; position: relative;">
+                                                    <form name="wc-richTextEditor" id="wc-richTextEditor-form" class="wc-richTextEditor" action="#" method="post">
+
+                                                        <!-- Editor Control Box -->
+                                                        <div class="editor-controls" id="editor-controls">
+
+                                                            <!-- Font Family -->
+                                                            <div class="rte editor button-group" id="fontFamilyGroup">
+                                                                <div class="rte editor dropdown-label"><i class="fa fa-fw fa-font"></i></div>
+                                                                <select class="rte dropdown editor" id="fontFamily" title="Font Family">
+                                                                    <i class="fa fa-fw fa-font"></i>
+                                                                    <option value="Arial, Helvetica, sans-serif" style="font-family: Arial, Helvetica, sans-serif">Arial</option>
+                                                                    <option value="'Arial Black', Gadget, sans-serif" style="font-family: 'Arial Black', Gadget, sans-serif">Arial Black</option>
+                                                                    <option value="'Times New Roman', serif" style="font-family: 'Times New Roman">Times New Roman</option>
+                                                                    <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif" style="font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif">Book Antiqua</option>
+                                                                    <option value="Impact, Charcoal, sans-serif" , style="font-family: Impact, Charcoal, sans-serif">Impact</option>
+                                                                    <option value="'Lucida Sans Unicode', 'Lucida Grande', sans-serif" style="font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Lucida Console</option>
+                                                                    <option value="Tahoma, Geneva, sans-serif" style="font-family: Tahoma, Geneva, sans-serif">Tahoma</option>
+                                                                    <option value="'Trebuchet MS', Helvetica, sans-serif" style="font-family: 'Trebuchet MS', Helvetica, sans-serif">Trebuchet MS</option>
+                                                                    <option value="Verdana, Geneva, sans-serif" style="font-family: Verdana, Geneva, sans-serif">Verdana</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- Header Style -->
+                                                            <div class="rte editor button-group" id="parStyleGroup">
+                                                                <div class="rte editor dropdown-label"><i class="fa fa-fw fa-header"></i></div>
+                                                                <select class="rte dropdown editor" id="parStyle" title="Paragraph Style">
+                                                                    <i class="fa fa-fw fa-font"></i>
+                                                                    <option value="h1" style="font-size: 2em; font-style: bold;" id="heading1">Heading 1</option>
+                                                                    <option value="h2" style="font-size: 1.75em; font-style: bold;" id="heading2">Heading 2</option>
+                                                                    <option value="h3" style="font-size: 1.5em; font-style: bold;">Heading 3</option>
+                                                                    <option value="h4" style="font-size: 1.25em; font-weight: 900;">Heading 4</option>
+                                                                    <option value="h5" style="font-size: 1.15em; font-weight: bold;">Heading 5</option>
+                                                                    <option value="h5" style="font-size: 1.15em; font-weight: bold;">Heading 6</option>
+                                                                    <option selected value="p" style="font-size: 1.0em; font-weight: bold;">Paragraph</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- Font Size -->
+                                                            <div class="rte editor button-group" id="textSizeGroup">
+                                                                <div class="rte editor dropdown-label"><i class="fa fa-fw fa-text-height"></i></div>
+                                                                <select class="rte dropdown editor" id="fontSize" title="Font Size" onclick="">
+                                                                    <i class="fa fa-fw fa-font"></i>
+                                                                    <option value="1" size="1">1</option>
+                                                                    <option value="2" size="2">2</option>
+                                                                    <option value="3" size="3">3</option>
+                                                                    <option value="4" size="4">4</option>
+                                                                    <option value="5" size="5">5</option>
+                                                                    <option value="6" size="6">6</option>
+                                                                    <option value="7" size="7">7</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- Font Color -->
+                                                            <div class="rte editor button-group" id="textColorGroup">
+                                                                <div class="rte editor dropdown-label"><i class="fa fa-fw fa-pencil"></i></div>
+                                                                <select class="rte dropdown editor" id="textColor" title="Text Color" onclick="">
+                                                                    <i class="fa fa-fw fa-font"></i>
+                                                                    <!--<option value="#eb5e6c" style="background-color: #eb5e6c; color: black;">Pig</option>-->
+                                                                    <option value="#eb2538" data-textcolor="white" style="background-color: #eb2538; color: white;">Scarlet</option>
+                                                                    <option value="#be1e2d" data-textcolor="white" style="background-color: #be1e2d; color: white;">Crimson</option>
+                                                                    <option value="#eb25a2" data-textcolor="black" style="background-color: #eb25a2; color: black;">Hot Pink</option>
+                                                                    <option value="#be1e9e" data-textcolor="black" style="background-color: #be1e9e; color: black;">Violet</option>
+                                                                    <option value="#781363" data-textcolor="white" style="background-color: #781363; color: white;">Plumb</option>
+                                                                    <option value="#5a25eb" data-textcolor="white" style="background-color: #5a25eb; color: white;">Indigo</option>
+                                                                    <option value="#491ebe" data-textcolor="white" style="background-color: #491ebe; color: white;">Royal Blue</option>
+                                                                    <option value="#2e1378" data-textcolor="white" style="background-color: #2e1378; color: white;">Navy</option>
+                                                                    <option value="#25aceb" data-textcolor="black" style="background-color: #25aceb; color: black;">Sky</option>
+                                                                    <option value="#1e79be" data-textcolor="white" style="background-color: #1e79be; color: white;">Aqua</option>
+                                                                    <option value="#135178" data-textcolor="white" style="background-color: #135178; color: white;">Deep Sea</option>
+                                                                    <option value="#25eb64" data-textcolor="black" style="background-color: #25eb64; color: black;">Lime</option>
+                                                                    <option value="#1ebe6e" data-textcolor="black" style="background-color: #1ebe6e; color: black;">Emerald</option>
+                                                                    <option value="#137858" data-textcolor="white" style="background-color: #137858; color: white;">Forest</option>
+                                                                    <option value="#e8eb35" data-textcolor="black" style="background-color: #e8eb35; color: black;">Lemon</option>
+                                                                    <option value="#d1be17" data-textcolor="white" style="background-color: #d1be17; color: white;">Mustard</option>
+                                                                    <option value="#787813" data-textcolor="white" style="background-color: #787813; color: white;">Olive</option>
+                                                                    <option value="#eb6725" data-textcolor="black" style="background-color: #eb6725; color: black;">Carrot</option>
+                                                                    <option value="#be511e" data-textcolor="white" style="background-color: #be511e; color: white;">Pumpkin</option>
+                                                                    <option value="#57391e" data-textcolor="white" style="background-color: #57391e; color: white;">Chocolate</option>
+                                                                    <option value="#ffffff" data-textcolor="black" style="background-color: #ffffff; color: black;">White</option>
+                                                                    <option value="#ebebeb" data-textcolor="black" style="background-color: #ebebeb; color: black;">Plaster</option>
+                                                                    <option value="#bebebe" data-textcolor="black" style="background-color: #bebebe; color: black;">Concrete</option>
+                                                                    <option value="#787878" data-textcolor="white" style="background-color: #787878; color: white;">Asphalt</option>
+                                                                    <option value="#000000" data-textcolor="white" style="background-color: #000000; color: white;">Black</option>
+                                                                    <option value="CUSTOM" style="background-color: white">CUSTOM</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <!-- Inline Styles -->
+                                                            <div class="rte editor button-group" id="inlineStyleGroup">
+                                                                <!-- Bold -->
+                                                                <a class="rte button editor" id="bold" title="Bold" onclick="boldSel()"><i class="fa fa-fw fa-bold"></i></a>
+                                                                <!-- Italicize -->
+                                                                <a class="rte button editor" id="italic" title="Italicize" onclick="italicSel()"><i class="fa fa-fw fa-italic"></i></a>
+                                                                <!-- Underline -->
+                                                                <a class="rte button editor" id="underline" title="Underline" onclick="underlineSel()"><i class="fa fa-fw fa-underline"></i></a>
+                                                                <!-- Strikethrough -->
+                                                                <a class="rte button editor" id="strikethrough" title="Strikethrough" onclick="strikethroughSel()"><i class="fa fa-fw fa-strikethrough"></i></a>
+                                                            </div>
+
+                                                            <!-- Alignment -->
+                                                            <div class="button-group" id="alignmentGroup">
+                                                                <!-- Align Left -->
+                                                                <a class="rte button editor" id="left" title="Left-align" onclick="alignLeftSel()"><i class="fa fa-fw fa-align-left"></i></a>
+                                                                <!-- Align Center -->
+                                                                <a class="rte button editor" id="center" title="Center-align" onclick="alignCenterSel()"><i class="fa fa-fw fa-align-center"></i></a>
+                                                                <!-- Align Right -->
+                                                                <a class="rte button editor" id="right" title="Right-align" onclick="alignRightSel()"><i class="fa fa-fw fa-align-right"></i></a>
+                                                                <!-- Justify -->
+                                                                <a class="rte button editor" id="justify" title="Justify" onclick="alignJustifySel()"><i class="fa fa-fw fa-align-justify"></i></a>
+                                                            </div>
+
+                                                            <!-- Lists -->
+                                                            <div class="button-group" id="listsGroup">
+                                                                <!-- Unordered List -->
+                                                                <a class="rte button editor" id="unordered" title="Bulleted List" onclick="newUlSel()"><i class="fa fa-fw fa-list-ul"></i></a>
+                                                                <!-- Ordered List -->
+                                                                <a class="rte button editor" id="ordered" title="Numbered List" onclick="newOlSel()"><i class="fa fa-fw fa-list-ol"></i></a>
+                                                            </div>
+
+                                                            <!-- Hyperlinks -->
+                                                            <div class="button-group" id="linkGroup">
+                                                                <!-- Hyperlink -->
+                                                                <a class="rte button editor" id="link" title="Add Hyperlink" onclick="linkSel()"><i class="fa fa-fw fa-link"></i></a>
+                                                                <!-- Remove Hyperlink -->
+                                                                <a class="rte button editor" id="unlink" title="Remove Hyperlink" onclick="unlinkSel()"><i class="fa fa-fw fa-unlink"></i></a>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!-- Editor text box -->
+                                                        <textarea class="editor-text-box" id="editor-text-box" name="textareaBox" style="display:none" wrap="hard"></textarea>
+                                                        <iframe class="editor-richText-box" id="editor-richText-box" name="richTextBox"></iframe>
+
+                                                        <!-- Submit Content -->
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+
+
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chartist JS -->
+    <script src="../assets/js/plugins/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/material-dashboard.min.js?v=2.1.0" type="text/javascript"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Javascript method's body can be found in assets/js/demos.js
+            md.initDashboardPageCharts();
+
+        });
+
+        /*
+Javascript Document
+Author: Jacob Scott
+Created: 11-14-15
+Modified: 12-17-15
+
+Handles functionality for rich text editor web component.
+*/
+
+
+        $(document).ready(function () {
+            // Call iFrameReady function
+            iFrameReady();
+
+            // Handle Editor Permissions
+            setPermissions(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+
+            // Handle text file import event
+            $("#fileImport").change(function () {
+                var fr = new FileReader();
+                console.log("This = " + this);
+                fr.onload = function () {
+                    loadContent(this.result);
+                    console.log("This.result = " + this.result);
+                };
+                fr.readAsText(this.files[0]);
+                console.log("This.Files[0] = " + this.files[0]);
+            });
+
+
+            // Load content
+            //loadContent("This is <i>Awesome</i>!");
+
+            // Preformat text font
+            $('.editor-richText-box').ready(function () {
+                richTextBox.document.execCommand('fontName', false, 'sans-serif');
+            })
+
+            // Dropdown Functionality
+            // font family
+            $('#fontFamily').change(function () {
+                var fontFamily = this.value;
+                // Match dropdown box style to selected color
+                $(this).css('font-family', fontFamily);
+
+                // Set selected color
+                richTextBox.document.execCommand('fontName', false, fontFamily);
+            });
+
+            $('#parStyle').change(function () {
+                richTextBox.document.execCommand('formatBlock', false, this.value);
+            });
+
+            $('#fontSize').change(function () {
+                richTextBox.document.execCommand('fontSize', false, this.value);
+            });
+
+            $('#textColor').change(function () {
+                var colorValue = this.value;
+                var textColor = $(this).css('color');
+                console.log("TextColor: ", textColor);
+                if (colorValue == "CUSTOM") {
+                    // Prompt for Custom Color
+                    colorValue = prompt("Enter the HEX value or RGBA value: ", "");
+                }
+                // Match dropdown box style to selected color
+                $(this).css('background-color', colorValue);
+
+                // Set selected color
+                richTextBox.document.execCommand('foreColor', false, colorValue);
+            });
+
+            $('#textHilight').change(function () {
+                var color = this.value;
+                if (color == "CUSTOM") {
+                    // Prompt for Custom Color
+                    color = prompt("Enter the HEX value or RGBA value: ", "");
+                }
+                richTextBox.document.execCommand('foreColor', false, color);
+            });
+
+        });
+
+        /* FUNCTION DEFINITIONS */
+
+        /* FUNCTION: iFrameReady()
+        Allows user editing of iFrame contents. */
+        function iFrameReady() {
+            richTextBox.document.designMode = 'On';
+        }
+
+        /* FUNCTION: submitContent()
+        Inserts rich text iFrame content into textarea field and submits the content to the parser */
+        function submitContent() {
+            var theForm = document.getElementById("wc-richTextEditor-form");
+            theForm.elements["textareaBox"].value = window.frames['richTextBox'].document.body.innerHTML;
+            theForm.submit();
+        }
+
+        /* FUNCTION: importContent()
+        Gets html content from database and injects it into the editor iframe */
+        function loadContent(content) {
+            var theForm = document.getElementById("wc-richTextEditor-form");
+            window.frames['richTextBox'].document.body.innerHTML = content;
+        }
+
+        /* FUNCTION: setPermissions()
+        Gets object editing permissions and sets Constants for editor's use. */
+        function setPermissions(HTML, CHANGE_PAR_STYLE, ALLOW_H1, CHANGE_INLINE_STYLE, CHANGE_SIZE, CHANGE_FONT_FAMILY, CHANGE_PAR_ALIGNMENT, CHANGE_TEXT_COLOR, ADD_LINK, ADD_LIST, ADD_IMAGE) {
+            // Restrict all HTML features
+            if (HTML == 0) {
+                CHANGE_PAR_STYLE = 0;
+                ALLOW_H1 = 0;
+                CHANGE_INLINE_STYLE = 0;
+                CHANGE_SIZE = 0;
+                CHANGE_FONT_FAMILY = 0;
+                CHANGE_PAR_ALIGNMENT = 0;
+                CHANGE_TEXT_COLOR = 0;
+                ADD_LINK = 0;
+                ADD_LIST = 0;
+                ADD_IMAGE = 0;
+            }
+
+            //Handle Permissions
+            if (CHANGE_PAR_STYLE == 0) {
+                $('.editor-controls > #parStyleGroup').hide();
+            }
+            if (ALLOW_H1 == 0) {
+                $('option#heading1').hide();
+                $('option#heading1').selected = false;
+            }
+            if (CHANGE_INLINE_STYLE == 0) {
+                $('.editor-controls > #inlineStyleGroup').hide();
+            }
+            if (CHANGE_SIZE == 0) {
+                $('.editor-controls > #textSizeGroup').hide();
+            }
+            if (CHANGE_FONT_FAMILY == 0) {
+                $('.editor-controls > #fontFamilyGroup').hide();
+            }
+            if (CHANGE_PAR_ALIGNMENT == 0) {
+                $('.editor-controls > #alignmentGroup').hide();
+            }
+            if (CHANGE_TEXT_COLOR == 0) {
+                $('.editor-controls > #textColorGroup').hide();
+            }
+            if (ADD_LIST == 0) {
+                $('.editor-controls > #listsGroup').hide();
+            }
+            if (ADD_LINK == 0) {
+                $('.editor-controls > #linkGroup').hide();
+            }
+        }
+
+        /* FUNCTION: importFromFile()
+        Gets object editing permissions and sets Constants for editor's use. */
+
+
+        /* FUNCTION: header1Sel()
+        Sets Header 1 peragraph style for the text */
+        function header1Sel() {
+            richTextBox.document.execCommand('formatBlock', false, 'h1');
+        }
+
+        /* FUNCTION: header2Sel()
+        Sets Header 2 peragraph style for the text */
+        function header2Sel() {
+            richTextBox.document.execCommand('formatBlock', false, 'h2');
+        }
+
+        /* FUNCTION: header3Sel()
+        Sets Header 3 peragraph style for the text */
+        function header3Sel() {
+            richTextBox.document.execCommand('formatBlock', false, 'h3');
+        }
+
+        /* FUNCTION: paragraphSel()
+        Sets Paragraphy peragraph style for the text */
+        function paragraphSel() {
+            richTextBox.document.execCommand('formatBlock', false, 'p');
+        }
+
+        /* FUNCTION: fontSel()
+        Change font family of selected text. */
+        function fontSel() {
+
+        }
+
+        /* FUNCTION: sizeSel()
+        Change font size of selected text. */
+        function sizeSel() {
+            var size = prompt('Font size:', '');
+            richTextBox.document.execCommand('FontSize', false, size);
+        }
+
+        /* FUNCTION: boldSel()
+        Bolds selected text. */
+        function boldSel() {
+            richTextBox.document.execCommand('bold', false, null);
+        }
+
+        /* FUNCTION: underlineSel()
+        Underlines selected text. */
+        function underlineSel() {
+            richTextBox.document.execCommand('underline', false, null);
+        }
+
+        /* FUNCTION: italicSel()
+        Italicizes selected text. */
+        function italicSel() {
+            richTextBox.document.execCommand('italic', false, null);
+        }
+
+        /* FUNCTION: strikethroughSel()
+        Stikes through selected text. */
+        function strikethroughSel() {
+            richTextBox.document.execCommand('strikeThrough', false, null);
+        }
+
+        /* FUNCTION: textColorSel()
+        Changes text color of selected text. */
+        function textColorSel() {
+
+        }
+
+        /* FUNCTION: highlightColorSel()
+        Changes highlight color of selected text. */
+        function highlightColorSel() {
+
+        }
+
+        /* FUNCTION: alignLeftSel()
+        Left-aligns selected text. */
+        function alignLeftSel() {
+            richTextBox.document.execCommand('justifyLeft', false, null);
+        }
+
+        /* FUNCTION: alignCenterSel()
+        Center-aligns selected text. */
+        function alignCenterSel() {
+            richTextBox.document.execCommand('justifyCenter', false, null);
+        }
+
+        /* FUNCTION: alignRightSel()
+        Right-aligns selected text. */
+        function alignRightSel() {
+            richTextBox.document.execCommand('justifyRight', false, null);
+        }
+
+        /* FUNCTION: alignJustifySel()
+        Justifies selected text. */
+        function alignJustifySel() {
+            richTextBox.document.execCommand('justifyFull', false, null);
+        }
+
+        /* FUNCTION: newOlSel()
+        Creates new Ordered List. */
+        function newOlSel() {
+            richTextBox.document.execCommand("InsertOrderedList", false, "newOL");
+        }
+
+        /* FUNCTION: newUlSel()
+        Creates new Unordered List. */
+        function newUlSel() {
+            richTextBox.document.execCommand("InsertUnorderedList", false, "newUL");
+        }
+
+        /* FUNCTION: linkSel()
+        Creates new hyperlink. */
+        function linkSel() {
+            var linkURL = prompt("Enter URL:", "http://");
+            richTextBox.document.execCommand("CreateLink", false, linkURL);
+        }
+
+        /* FUNCTION: unlinkSel()
+        Removes hyperlink. */
+        function unlinkSel() {
+            richTextBox.document.execCommand("Unlink", false, null);
+        }
+    </script>
+</body>
+
+</html>
