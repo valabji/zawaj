@@ -46,8 +46,8 @@
                                         Oud-Turnhout
                                     </td>
                                     <td>
-                                        <a href="#"><i class="fa fa-edit fa-lg"></i></a>
-                                        <a ng-click="ConfirmeDelBundle(bundle.id,'#DelBundle')"><i class="fa fa-trash fa-lg text-danger"></i></a>
+                                        <button class="btn btn-primary btn-sm" ng-click="ConfirmeUpdateBundle(bundle,'#UpdateBundle')"><i class="fa fa-edit fa-lg"></i></button>
+                                        <button class="btn btn-danger btn-sm"  ng-click="ConfirmeDelBundle(bundle.id,'#DelBundle')"><i class="fa fa-trash fa-lg"></i></button>
                                     </td>
                                 </tr>
                                
@@ -73,8 +73,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-white">إضافة باقة</h5>
-                <button type="button" class="close text-white bg-white rounded" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title">إضافة باقة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -119,18 +119,18 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title">حذف باقة</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title text-white">حذف باقة</h5>
+                <button type="button" class="close text-dark bg-white rounded" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="panel panel-default credit-card-box">
                     <div class="panel-body">
-                            <p>sdsd?</p>
+                            <p> هل متاكد من حذف الباقة ؟ </p>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-danger btn-block" ng-click="DelBundle('#DelBundle')">حفظ</button>
+                                    <button class="btn btn-danger btn-block" ng-click="DelBundle('#DelBundle')">حذف</button>
                                 </div>
                             </div>
                             <div class="row" style="display:none;">
@@ -146,3 +146,49 @@
 </div>
 <!-- Del Bunble-->
 
+
+
+
+<!-- Update Bundle -->
+<div class="modal" id="UpdateBundle" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">تعديل باقة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" ng-model="update_name" placeholder="إسم الباقة">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input class="form-control" type="number" ng-model="update_price" placeholder="سعر الباقة">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <textarea class="form-control" cols="10" ng-model="update_description" rows="5" placeholder="الوصف"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success btn-block" ng-click="UpdateBundle('#UpdateBundle')">تعديل</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Update Bundle -->
