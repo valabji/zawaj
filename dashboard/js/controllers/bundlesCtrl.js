@@ -75,9 +75,10 @@ angular.module("myApp")
 
         $scope.ConfirmeUpdateBundle = function (bundle,ModalName) {
             $scope.OpenModal(ModalName)
+            parseInt(bundle.price)
             $scope.bundle_id = bundle.id
             $scope.update_name = bundle.name
-            $scope.update_price = parseInt(bundle.price)
+            $scope.update_price = bundle.price
             $scope.update_description = bundle.description
         }
 
@@ -88,8 +89,12 @@ angular.module("myApp")
                     name : $scope.update_name,
                     price: $scope.update_price,
                     description : $scope.update_description
-                }).then(function (resp) {
-                    console.log(resp)
+                }).then(function (data) {
+                    if (data.success) {
+                        toastr.success('تم حذف تعديل بنجاح', { timeOut: 1500 })
+                        $scope.get_bundles()
+                        $scope.HideModal(ModalName)
+                    }
                 })
             }
         }
