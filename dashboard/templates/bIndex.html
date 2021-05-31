@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">إدارة باقات الأشتراك </h4>
-                    <input type="button" class="btn btn-success btn-sm" ng-click="OpenModal('#AddBundle')" style="float:left;margin-top: -34px;margin-bottom: -20px;" value="إضافة باقة">
+                    <input type="button" class="btn btn-success btn-sm" ng-click="AddBundleModel('#AddBundle')" style="float:left;margin-top: -34px;margin-bottom: -20px;" value="إضافة باقة">
                 </div>
                 <div class="card-body">
                     <br />
@@ -168,7 +168,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input class="form-control" type="number" ng-model="update_price" placeholder="سعر الباقة">
+                                    <input class="form-control" type="number" string-to-number ng-model="update_price" placeholder="سعر الباقة">
                                 </div>
 
                                 <div class="col-md-12">
