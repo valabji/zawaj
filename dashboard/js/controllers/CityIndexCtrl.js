@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("CityIndexCtrl", function ($scope, $rootScope, $http, $state, $timeout, $filter,API_URL,ModalService) {
+    .controller("CityIndexCtrl", function ($scope, $rootScope, $http, $state, $timeout, $filter,API_URL,$ModalService) {
         
 
         $scope.get_city=function(){
@@ -12,6 +12,8 @@ angular.module("myApp")
                 toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
             })
         }
+
+        
             
         $scope.get_city()
         
