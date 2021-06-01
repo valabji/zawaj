@@ -16,5 +16,5 @@ jobs:
           commit-message: autoPull from API
           title: autoPull from API
           body: autoPull from API
-          branch: api
-          base: main
+          branch: main
+          base: api
