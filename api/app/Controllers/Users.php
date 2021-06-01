@@ -196,10 +196,8 @@ class Users extends ResourceController
     {
         $db = db_connect();
         $cn = $db->query("select * from user");
-        $cn = $cn->getResult();
-        $st = new UserModel();
+        $data = $cn->getResult();
         $where = "true";
-        $data = $st->findAll();
         $data2 = [];
         foreach ($data as $item) {
             unset($item['password']);
