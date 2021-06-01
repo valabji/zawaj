@@ -6,7 +6,7 @@ on:
     branches:
       - main
   workflow_run:
-    workflows: ["main pull request"]
+    workflows: ["api pull request"]
     types:
       - completed
   pull_request:
