@@ -1,4 +1,4 @@
-name: main pull request
+name: api pull request
 on:
   push:
     branches:

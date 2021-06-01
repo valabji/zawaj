@@ -1,0 +1,20 @@
+name: dashboard pull request
+on:
+  push:
+    branches:
+      - dashboard
+jobs:
+  autoPull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: autoPull from Dashboard
+          title: autoPull from Dashboard
+          body: autoPull from Dashboard
+          branch: main
+          base: dashboard
