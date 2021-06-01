@@ -11,7 +11,7 @@ angular.module("myApp")
                     $scope.settings = resp.data.data
                     console.log($scope.settings)
                 }, function (e) {
-                toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
+                toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 1500})
             })
         }
 
