@@ -62,19 +62,26 @@ angular.module("myApp")
 
         $scope.UpdateSetting = function (ModalName) {
             if ($scope.update_name && $scope.update_value) {
-                $http.patch(API_URL + "settings/" + $scope.setting_id, {
-                    name: $scope.update_name,
-                    value : $scope.update_value
-                }).then(function (data) {
-                    if (data.success) {
-                        toastr.success('تم  التعديل   بنجاح', { timeOut: 1500 })
-                        $scope.update_name = ""
-                        $scope.update_value = ""
-                        $scope.get_settings()
-                        $ModalService.HideModal(ModalName)
+                
+                $.ajax({
+                    method: 'PATCH',
+                    url: API_URL + "settings/" + $scope.setting_id,
+                    data: {
+                        name: $scope.update_name,
+                        value : $scope.update_value
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            toastr.success('تم  التعديل   بنجاح', { timeOut: 1500 })
+                            $scope.update_name = ""
+                            $scope.update_value = ""
+                            $scope.get_settings()
+                            $ModalService.HideModal(ModalName)
+                        }
+                    },
+                    error: function () {
+                        toastr.error('لا يوجد اتصال بالانترنت', { timeOut: 2000 , positionClass : "toast-top-center" })  
                     }
-                }, function (e) {
-                toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
                 })
             } else {
                 toastr.error('البيانات غير مكتملة', { timeOut: 2000 , positionClass : "toast-top-center" })  
