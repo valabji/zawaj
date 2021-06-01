@@ -5535,7 +5535,7 @@ button.close {
   pointer-events: auto;
   background-color: #ffffff;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
   border-radius: 0.3rem;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
   outline: 0;
@@ -8644,7 +8644,12 @@ button.bg-dark:focus {
 }
 
 .font-weight-bold {
-  font-weight: 500 !important;
+  font-weight: bold !important;
+  background: aliceblue;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 18px;
+  padding: 5px;
 }
 
 .font-italic {

@@ -7,7 +7,6 @@ angular.module("myApp")
                 $http.get(API_URL + "city")
                 .then(function(resp){
                     $scope.cityes = resp.data.data
-                    console.log($scope.city)
                 }, function (e) {
                 toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
             })
@@ -17,61 +16,87 @@ angular.module("myApp")
             
         $scope.get_city()
         
-        $scope.OpenModal = function (ModalName) {
-            $(ModalName).modal('show')
+        $scope.AddCityModal = function (ModalName) {
+            $ModalService.OpenModal(ModalName)
         } 
 
             
-        $scope.HideModal = function (ModalName) {
-            $(ModalName).modal('hide')    
-        }
+
 
         $scope.AddCity = function (ModalName) {
-            $.ajax({
-                url: API_URL + 'city',
-                method: "post",
-                data:{
-                        name: $scope.name,
-                    },
-                success:function(data)
-                {
-                    if (data.success) {
-                        toastr.success('تم إضافة المدينة بنجاح', { timeOut: 1500 })
-                        $scope.name = ""
-                        $scope.get_city()
-                        $scope.HideModal(ModalName)
+            if ($scope.name) {
+                $.ajax({
+                    url: API_URL + 'city',
+                    method: "post",
+                    data: {name: $scope.name},
+                    success: function (data) {
+                        if (data.success) {
+                            toastr.success('تم إضافة المدينة بنجاح', { timeOut: 1500 })
+                            $scope.name = ""
+                            $scope.get_city()
+                            $ModalService.HideModal(ModalName)
+                        }
                     }
-                }
-            })
+                })
+            } else {
+                toastr.error('البيانات غير مكتملة', { timeOut: 2000 , positionClass : "toast-top-center" })  
+            }
         }
             
 
 
-        $scope.ConfirmeDelBundle = function (ID, ModalName) {
-            $scope.bundle_id = ID
-            $scope.OpenModal(ModalName)
+        $scope.ConfirmeDelCity = function (ID, ModalName) {
+            $scope.City_id = ID
+            $ModalService.OpenModal(ModalName)
         }
 
-        $scope.DelBundle = function (ModalName) {
+        $scope.DelCity = function (ModalName) {
             $.ajax({
                 method: 'DELETE',
-                url: API_URL + "city/"+ $scope.bundle_id ,
+                url: API_URL + "city/"+ $scope.City_id ,
                 success: function (data) {
                     
                     if (data.success) {
                         toastr.success('تم حذف الباقة بنجاح', { timeOut: 1500 })
                         $scope.get_city()
-                        $scope.HideModal(ModalName)
+                        $ModalService.HideModal(ModalName)
                     }
                 },
                 error: function () {
-                    console.log(API_URL)
+                    toastr.error('لا يوجد اتصال بالانترنت', { timeOut: 2000 , positionClass : "toast-top-center" })  
                 }
             })
             
         }
             
         
+
+
+        $scope.ConfirmeUpdateCity = function (city,ModalName) {
+            $ModalService.OpenModal(ModalName)
+            $scope.city_id = bundle.id
+            $scope.update_name = bundle.name
+        }
+
+
+        $scope.UpdateCity = function (ModalName) {
+            if ($scope.update_name) {
+                $http.patch(API_URL + "city/" + $scope.city_id, {
+                    name : $scope.update_name
+                }).then(function (data) {
+                    if (data.success) {
+                        toastr.success('تم  تعديل المدينة  بنجاح', { timeOut: 1500 })
+                        $scope.get_city()
+                        $scope.update_name = ""
+                        $ModalService.HideModal(ModalName)
+                    }
+                }, function (e) {
+                toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
+                })
+            } else {
+                toastr.error('البيانات غير مكتملة', { timeOut: 2000 , positionClass : "toast-top-center" })  
+            }
+        }
 
 
     })    
