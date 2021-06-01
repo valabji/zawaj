@@ -4,7 +4,6 @@ namespace App\Controllers;
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PATCH, DELETE');
-$db = db_connect();
 
 // require APPPATH . '/Libraries/REST_Controller.php';
 // use Restserver\Libraries\REST_Controller;
@@ -15,7 +14,9 @@ use App\Models\UserModel;
 class Users extends ResourceController
 {
     use ResponseTrait;
-
+    public function __construct(){
+        $db = db_connect();
+    }
     public function index()
     {
         $st = new UserModel();
