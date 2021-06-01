@@ -14,9 +14,7 @@ use App\Models\UserModel;
 class Users extends ResourceController
 {
     use ResponseTrait;
-    public function __construct(){
-        $db = db_connect();
-    }
+    
     public function index()
     {
         $st = new UserModel();
@@ -196,6 +194,7 @@ class Users extends ResourceController
 
     public function search()
     {
+        $db = db_connect();
         $cn = $db->table('user')->countAll();
 
         $st = new UserModel();
