@@ -193,7 +193,7 @@ class Users extends ResourceController
 
     public function search()
     {
-        $cn = $db->table('users')->countAll();
+        $cn = $db->table('user')->countAll();
 
         $st = new UserModel();
         $where = "true";
