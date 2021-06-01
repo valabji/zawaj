@@ -4,7 +4,7 @@ on:
     branches:
       - api
 jobs:
-  productionPromotion:
+  Pulling:
     runs-on: ubuntu-latest
     steps:
       - name: Create Pull Request
