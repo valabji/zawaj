@@ -35,7 +35,6 @@ class City extends ResourceController
         http_response_code(200);
         $res = [
             'success' => $ok,
-            'data' => $data,
             'msg' => 'Data Created'
         ];
         return $this->response->setJSON($res);
@@ -43,15 +42,13 @@ class City extends ResourceController
     public function update($id = null)
     {
         $data = [
-            'name' => $this->request->getVar("name"),
-            'value' => $this->request->getVar("value")
+            'name' => $this->request->getVar("name")
         ];
         $st = new CityModel();
         $ok = $st->update($id,$data);
         http_response_code(200);
         $res = [
             'success' => $ok,
-            'data' => $data,
             'msg' => 'Data Updated'
         ];
         return $this->response->setJSON($res);
