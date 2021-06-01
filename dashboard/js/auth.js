@@ -64,8 +64,8 @@ function($http, $rootScope, $state , $window, Session, AUTH_EVENTS,API_URL) {
 	
 	//log out the user and broadcast the logoutSuccess event
 	authService.logout = function(){
-		Session.destroy();
-		$window.sessionStorage.removeItem("userInfo");
+	Session.destroy();
+	$window.sessionStorage.removeItem("userInfo");
     $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
     $state.go("app.login")
     $rootScope.logined = false
