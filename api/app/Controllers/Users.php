@@ -209,7 +209,6 @@ class Users extends ResourceController
         http_response_code(200);
         $res = [
             'success' => true,
-            'data2' => $cn,
             'data' => $data2,
         ];
         return $this->response->setJSON($res);
