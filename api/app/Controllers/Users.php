@@ -195,7 +195,7 @@ class Users extends ResourceController
     public function search()
     {
         $db = db_connect();
-        $cn = $db->query("select * from user");
+        $cn = $db->query("select * from user")->result();
 
         $st = new UserModel();
         $where = "true";
