@@ -81,17 +81,24 @@ angular.module("myApp")
 
         $scope.UpdateCity = function (ModalName) {
             if ($scope.update_name) {
-                $http.patch(API_URL + "city/" + $scope.city_id, {
-                    name : $scope.update_name
-                }).then(function (data) {
-                    if (data.success) {
-                        toastr.success('تم  تعديل المدينة  بنجاح', { timeOut: 1500 })
-                        $scope.get_city()
-                        $scope.update_name = ""
-                        $ModalService.HideModal(ModalName)
+                $.ajax({
+                    method: 'PATCH',
+                    url: API_URL + "city/" + $scope.city_id,
+                    data: {
+                        name : $scope.update_name
+                    },
+                    success: function (data) {
+                        
+                        if (data.success) {
+                            toastr.success('تم  تعديل المدينة  بنجاح', { timeOut: 1500 })
+                            $scope.get_city()
+                            $scope.update_name = ""
+                            $ModalService.HideModal(ModalName)
+                        }
+                    },
+                    error: function () {
+                        toastr.error('لا يوجد اتصال بالانترنت', { timeOut: 2000 , positionClass : "toast-top-center" })  
                     }
-                }, function (e) {
-                toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
                 })
             } else {
                 toastr.error('البيانات غير مكتملة', { timeOut: 2000 , positionClass : "toast-top-center" })  
