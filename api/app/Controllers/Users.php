@@ -195,7 +195,7 @@ class Users extends ResourceController
     {
         $st = new UserModel();
         $where = "true";
-        $data = $st->where($where)->findAll();
+        $data = $st->findAll();
         $data2 = [];
         foreach ($data as $item) {
             unset($item['password']);
