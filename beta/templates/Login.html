@@ -1,0 +1,34 @@
+﻿
+<div id="main-wrapper" class="wrapper-hidden z-index-100">
+
+    <section class="element-section white-section">
+        <div class="container">
+            <br> <br> <br>
+            <h1 class="black-element-title element-title" style="font-size:25px">تسجيل الدخول</h1>
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <form class="contact-form-white d-flex flex-column align-items-center element-form-left"  name="loginForm" method="post" ng-submit="submit()" novalidate form-autofill-fix>
+                        <p ng-show="error" class="text-danger">The password you entered is incorrect. Please try again (make sure your caps lock is off).</p>
+
+                        <input type="email" name="email" ng-model="credentials.email" placeholder="البريد الألكتروني"  required>
+                        <div class="error" ng-show="(submitted  || loginForm.email.$dirty)  && loginForm.email.$invalid">
+                            <p class="error" ng-show="loginForm.email.$error.required">'email' is mandatory</p>
+				        </div>
+                        
+                        <input type="password" name="password" ng-model="credentials.password" placeholder=" كلمة المرور" class=""  required>
+                            <div class="error" ng-show="(submitted  || loginForm.password.$dirty)  && loginForm.password.$invalid">
+                            <p class="error" ng-show="loginForm.password.$error.required">'Password' is mandatory</p>
+				        </div>
+
+                        <input type="submit" id="btn-login" class="button-submit" value="تسجيل الدخول " />
+                        <a href="#">هل نسيت كلمه السر ؟</a>
+                    </form>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+    </section>
+
+   
+</div>

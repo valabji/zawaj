@@ -1,0 +1,149 @@
+﻿
+     
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title" style="text-align:center;">وسائل التواصل</h4>
+                <input type="button" class="btn btn-primary btn-sm" ng-click="AddSettingsModal('#AddSettings')" style="float:left;margin-top: -34px;margin-bottom: -20px;" value="إضافة">
+
+            </div>
+            <div class="card-body">
+                      <br />
+                    <div class="table-responsive">
+                        <table class="table" datatable="ng" dt-options="vm.dtOptions">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th style="text-align:center">
+                                         #
+                                    </th>
+                                    <th style="text-align:center">
+                                         منصة التواصل
+                                    </th>
+                                    <th style="text-align:center">
+                                        الرابط  
+                                    </th>
+                                    <th style="text-align:center">
+                                        إجراءات
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="setting in settings">
+                                    <td>
+                                        {{setting.id}}
+                                    </td>
+                                    <td>
+                                        {{setting.name}}
+                                    </td>
+                                    <td>
+                                        {{setting.value}}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" ng-click="ConfirmeUpdateSetting(setting,'#UpdateSetting')"><i class="fa fa-edit fa-lg"></i></button>
+                                        <!-- <button class="btn btn-danger btn-sm" ng-click="ConfirmeDelBundle(setting.id,'#DelBundle')"><i class="fa fa-trash fa-lg text-danger"></i></button> -->
+                                    </td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+<!-- Add Setting-->
+<div class="modal" id="UpdateSetting" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">تعديل رابط </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" ng-model="update_name" placeholder="إسم المنصة">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" ng-model="update_value" placeholder="الرابط">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success btn-block" ng-click="UpdateSetting('#UpdateSetting')">تعديل</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Setting-->
+
+
+
+
+<!-- AddSettings -->
+<div class="modal" id="AddSettings" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">إضافة رابط</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <div class="row">
+                               <div class="col-md-12">
+                                    <input class="form-control" type="text" ng-model="name" placeholder="إسم المنصة">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" ng-model="value" placeholder="الرابط">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success btn-block" ng-click="AddSettings('#AddSettings')">حفظ</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- AddSettings-->
+
+

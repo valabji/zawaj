@@ -1,0 +1,164 @@
+﻿<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">المدن</h4>
+                        <input type="button" class="btn btn-primary btn-sm" ng-click="AddCityModal('#AddCity')" style="float:left;margin-top: -34px;margin-bottom: -20px;" value="إضافة مدينة">
+
+                    </div>
+                    <div class="card-body">
+
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table" datatable="ng" dt-options="vm.dtOptions">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th style="text-align:center">
+                                            الكود
+                                        </th>
+                                        <th style="text-align:center">
+                                            المدينة
+                                        </th>
+                                        <th style="text-align:center">
+                                            إجراءات
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  
+                                    <tr ng-repeat="city in cityes">
+                                        <td>
+                                           {{city.id}}
+                                        </td>
+                                        <td>
+                                            {{city.name}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" ng-click="ConfirmeUpdateCity(city,'#UpdateCity')"><i class="fa fa-edit fa-lg"></i></button>
+                                            <button class="btn btn-danger btn-sm"  ng-click="ConfirmeDelCity(city.id,'#DelCity')"><i class="fa fa-trash fa-lg"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- AddCity-->
+<div class="modal" id="AddCity" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">إضافة مدينة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" ng-model="name" placeholder="إسم المدينة">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success btn-block" ng-click="AddCity('#AddCity')">حفظ</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- AddCity-->
+
+
+
+<!-- Del Bunble-->
+<div class="modal" id="DelCity" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title text-white">حذف مدينة</h5>
+                <button type="button" class="close text-dark bg-white rounded" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <p> هل متاكد من حذف المدينة ؟ </p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-danger btn-block" ng-click="DelCity('#DelCity')">حذف</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Del Bunble-->
+
+
+
+<!-- Update City -->
+<div class="modal" id="UpdateCity" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">تعديل مدينة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" ng-model="update_name" placeholder="إسم المدينه">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success btn-block" ng-click="UpdateCity('#UpdateCity')">تعديل</button>
+                                </div>
+                            </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-xs-12">
+                                    <p class="payment-errors"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Update City -->

@@ -1,0 +1,194 @@
+.stats {
+    font-size: 15px !important;
+}
+
+.sidebar[data-color="purple"] li.active > a {
+    background-color: #ec407a;
+    box-shadow: 0 4px 20px 0px #ec407a;
+}
+
+.form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #ec407a 2px, #ec407a, linear-gradient(to top, #d2d2d2 1px, #ec407a 1px));
+}
+
+.card .card-header-primary .card-icon, .card .card-header-primary .card-text, .card .card-header-primary:not(.card-header-icon):not(.card-header-text), .card.bg-primary, .card.card-rotate.bg-primary .front, .card.card-rotate.bg-primary .back {
+    background: linear-gradient(60deg, #ec407a, #ec407a);
+}
+
+.btn.btn-primary {
+    color: #fff;
+    background-color: #fb8c00 !important;
+    border-color: #fb8c00 !important;
+    box-shadow: 0 2px 2px 0 #ec407a, 0 3px 1px -2px #ec407a, 0 1px 5px 0 #ec407a;
+}
+
+.rowT {
+    padding: 20px 0px 0px 0px !important;
+}
+
+
+.yuu {
+    color: #fb8c00;
+}
+
+.yuu:hover {
+    color: #fb8c00;
+}
+
+.form-check .form-check-input:checked + .form-check-sign .check {
+    background: #fb8c00;
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+}
+
+    .custom-select select {
+        display: none; /*hide original SELECT element: */
+    }
+
+.select-selected {
+    background-color: DodgerBlue;
+}
+
+    /* Style the arrow inside the select element: */
+    .select-selected:after {
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #fff transparent transparent transparent;
+    }
+
+    /* Point the arrow upwards when the select box is open (active): */
+    .select-selected.select-arrow-active:after {
+        border-color: transparent transparent #fff transparent;
+        top: 7px;
+    }
+
+/* style the items (options), including the selected item: */
+.select-items div, .select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent #ec407a transparent;
+    cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color:#ec407a;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+
+.btn.btn-rose:focus, .btn.btn-rose.focus, .btn.btn-rose:hover {
+    color: #fff;
+    background-color: #999999 !important;
+    border-color: #999999 !important;
+}
+
+.btn.btn-rose:focus, .btn.btn-rose.focus, .btn.btn-rose {
+    color: #fff;
+    background-color: #999999 !important;
+    border-color: #999999 !important;
+}
+
+
+
+.pricing .card {
+    border: none;
+    border-radius: 1rem;
+    transition: all 0.2s;
+    box-shadow: 0 0.5rem 1rem 0 #ec407a;
+}
+
+.pricing hr {
+    margin: 1.5rem 0;
+}
+
+.pricing .card-title {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+.pricing .card-price {
+    font-size: 3rem;
+    margin: 0;
+}
+
+    .pricing .card-price .period {
+        font-size: 0.8rem;
+    }
+
+.pricing ul li {
+    margin-bottom: 1rem;
+}
+
+.pricing .text-muted {
+    opacity: 0.7;
+}
+
+.pricing .btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    opacity: 0.7;
+    transition: all 0.2s;
+}
+
+/* Hover Effects on Card */
+
+@media (min-width: 992px) {
+    .pricing .card:hover {
+        margin-top: -.25rem;
+        margin-bottom: .25rem;
+        box-shadow: 0 0.5rem 1rem 0 #ec407a;
+    }
+
+        .pricing .card:hover .btn {
+            opacity: 1;
+        }
+}

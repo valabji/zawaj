@@ -1,0 +1,255 @@
+﻿
+<div class="content">
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title "> المستخدمون  </h4>
+
+            </div>
+            <div class="card-body">
+                <br>
+                <div class="table-responsive">
+                    <table datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-bordered" id="example">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th style="text-align:center">
+                                    الكود
+                                </th>
+                                <th style="text-align:center">
+                                    الأسم
+                                </th>
+                                <th style="text-align:center">
+                                    البريد الألكتروني
+                                </th>
+                                <th style="text-align:center">
+                                    الهاتف
+                                </th>
+
+                                <th style="text-align:center">
+                                    الجنس
+                                </th>
+                                <th style="text-align:center">
+                                    العمليات
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users">
+                                <td>
+                                    {{user.id}}
+                                </td>
+                                <td>
+                                    {{user.fullname}}
+                                </td>
+                                <td>
+                                    {{user.email}}
+                                </td>
+                                <td>
+                                    {{user.phone}}
+                                </td>
+
+                                <td>
+                                    <i class="fa fa-{{user.gender == 'Female' ? 'female':'male'}} fa-lg"></i>
+                                </td>
+                                <td>
+                                    <button class="btn btn-success btn-sm" ng-click="ViewUser(user,'#ViewUser')"> عرض المزيد </button>
+                                    <button class="btn btn-primary btn-sm"> حالة الطلب </button>
+                                    <button class="btn btn-danger btn-sm"> حظر </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+</div>
+ 
+
+
+
+
+<!-- View User -->
+<div class="modal fade modal-md" id="ViewUser" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success">
+                <h5 class="modal-title text-white"> بيانات المستخدم   ( {{ fullname }} ) </h5>
+                <button type="button" class="close text-dark bg-white rounded" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default credit-card-box">
+                    <div class="panel-body">
+                        <p>  </p>
+                        <div class="row">
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">الاسم كامل</lable>
+                                <p> {{ fullname }}</p>
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">البريد الالكتروني</lable>
+                                <p>{{ email }}</p>
+                            </div>
+
+                             <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">رقم الهاتف</lable>
+                                <p>{{ email }}</p>
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold"> البلد </lable>
+                                <p> {{ country }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">رقم الهوية / الجواز </lable>
+                                <p> {{ passport_id }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">رقم الهوية / الجواز </lable>
+                                <p> {{ passport_expire }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">الطول  </lable>
+                                <p> {{ height }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">الوزن </lable>
+                                <p> {{ weight }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3">
+                                <lable class="font-weight-bold">الاصل العرقي </lable>
+                                <p> {{ race }} </p>
+                            </div>
+
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">إختر أيهما </lable>
+                                <p> {{ race2 }} </p>
+                            </div>
+
+                             <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold"> الأصل العرقي غير ذلك </lable>
+                                <p> {{ race3 }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">المؤهل العلمي</lable>
+                                <p> {{ education }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold"> الوظيفة </lable>
+                                <p> {{ employee }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold"> لون البشرة </lable>
+                                <p> {{ skin_color }} </p>
+                            </div>
+
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold"> الؤهل العلمي </lable>
+                                <p> {{ education }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">العقيدة</lable>
+                                <p> {{ religion }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">التدخين</lable>
+                                <p> {{ smoker }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">الوضع المادي</lable>
+                                <p> {{ finance }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">مصدر دخل مادي</lable>
+                                <p> {{ finance_alt }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">البنية الجسمية</lable>
+                                <p> {{ body_shape }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">بعد الزواج سأسكن</lable>
+                                <p> {{ location_ftr_mrg }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">طريقة الزواج</lable>
+                                <p> {{ marriage_type }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">الحالة الاجتماعية</lable>
+                                <p> {{ marital_status }} </p>
+                            </div>
+
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">صفة الزواج</lable>
+                                <p> {{ characteristic_of_marriage }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">تعدد الزوجات</lable>
+                                <p> {{ mult_marriage }} </p>
+                            </div>
+
+                            <div class="col-md-4 mt-3" >
+                                <lable class="font-weight-bold">عدد الابناء </lable>
+                                <p> {{ num_sone }} </p>
+                            </div>
+
+
+                             <div class="col-md-12 mt-3" >
+                                <lable class="font-weight-bold">وصف عن نفسك</lable>
+                                <p> {{ self_bio }} </p>
+                            </div>
+
+                            <div class="col-md-12 mt-3" >
+                                <lable class="font-weight-bold">وصف عن شريكك</lable>
+                                <p> {{ part_bio }} </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- View User -->
+
