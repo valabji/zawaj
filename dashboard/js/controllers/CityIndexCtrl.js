@@ -74,8 +74,8 @@ angular.module("myApp")
 
         $scope.ConfirmeUpdateCity = function (city,ModalName) {
             $ModalService.OpenModal(ModalName)
-            $scope.city_id = bundle.id
-            $scope.update_name = bundle.name
+            $scope.city_id = city.id
+            $scope.update_name = city.name
         }
 
 
