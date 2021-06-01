@@ -197,8 +197,8 @@ class Users extends ResourceController
         $db = db_connect();
         $cn = $db->query("select * from user");
         $data = $cn->getResult();
+        $data = json_encode($data);
         $data = json_decode($data,true);
-        // $data = json_encode($data,true);
         $where = "true";
         $data2 = [];
         foreach ($data as $item) {
