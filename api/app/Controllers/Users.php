@@ -171,6 +171,7 @@ class Users extends ResourceController
             ->findAll()[0];
         $id = $data['id'];
         $pass = $data['password'];
+        $blocked = $data['blocked']==1;
         unset($data['password']);
         $generator = new \PHPTokenGenerator\TokenGenerator();
         $token = $generator->generate(32);
@@ -189,6 +190,12 @@ class Users extends ResourceController
                 'success' => true,
                 'data' => $data,
             ];
+            if ($blocked) {
+                $res = [
+                    'success' => false,
+                    'data' => 'Blocked',
+                ];
+            }
         }
         http_response_code(200);
         return $this->response->setJSON($res);
