@@ -1,0 +1,460 @@
+﻿<div id="main-wrapper" class="wrapper-hidden z-index-100">
+
+    <section class="element-section white-section">
+        <div class="container">
+            <br> <br>
+            <h1 class="black-element-title element-title" style="font-size:25px">تسجيل جديد</h1>
+                <div class="tabs-section-type-1">
+                    <div class="container">
+                        <div class="tabs-wrapper">
+                            <div class="row">
+                                <div class="col tabs-header d-flex align-items-end" ng-init="tab='tab-body-4'">
+                                    <div class="tab-trigger-wrapper">
+                                        <h5 class="tab-trigger {{ tab=='tab-body-1'?'active':'' }}" id="FristTab">البيانات الأساسية</h5>
+                                    </div>
+                                    <div class="tab-trigger-wrapper">
+                                        <h5 class="tab-trigger {{ tab=='tab-body-2'?'active':'' }}"  id="SecondTab">الخطوة الثانية</h5>
+                                    </div>
+                                    <div class="tab-trigger-wrapper">
+                                        <h5 class="tab-trigger {{ tab=='tab-body-3'?'active':'' }}" id="ThirdTab">الخطوة الثالثة</h5>
+                                    </div>
+                                    <div class="tab-trigger-wrapper" >
+                                        <h5 class="tab-trigger {{ tab=='tab-body-4'?'active':'' }}" id="FourthTab">الخطوة الرابعة</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <form name="myForm">
+                            <div class="tabs-body-wrapper">
+                               
+                             
+                                <div class="tab-body tab-body-4 {{ tab=='tab-body-4'?'active-body':'' }}" ng-show="tab=='tab-body-4'">
+                                    <div class="contact-form-white d-flex flex-column align-items-center element-form-left">
+                                        <div class="row">
+                                            <div class="col-lg-6 Man">
+                                                <p style="text-align:right"> أختر صورة من الجهاز</p>
+                                                <img id="blah" src="{{img_src ? img_src : './img/default-user-avatar.jpg'}}" alt="your image" style="width:150px;border: 2px solid white;margin: 0 0 0 40%;" />
+                                                <input type="file" id="file"  class="input-small"  onchange="angular.element(this).scope().previewPhoto()" />
+                                            </div>
+
+                                            <div class="col-lg-6 Man">
+                                                <p style="text-align:right">   أختر الشكل المناسب</p>
+                                                <div class="row">
+                                                    <div class="col-lg-2" id="avatar_file">
+                                                        <img src="./img/Icon/M1.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/M2.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/M3.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/M4.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/M5.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/M6.jpg" style="width:100px" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 Woman" style="display:none">
+                                                <p style="text-align:right;">   أختر الشكل المناسب</p>
+                                                <div class="row">
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/W1.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/W2.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/W3.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/W4.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/W5.jpg" style="width:100px" />
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <img src="./img/Icon/W6.jpg" style="width:100px" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <input type="email" placeholder="البريد الإلكتروني" class="input-small {{myForm.v_email.$error.required && myForm.v_email.$touched ?'border-danger':''}}"  ng-model="email" name="v_email" autocomplete="off" ng-pattern = '/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i' required> 
+                                                <div class="text-danger text-right validate" ng-show="myForm.v_email.$error.pattern">بريد إلكتروني خاطئ</div>
+                                                <div class="text-danger text-right validate" ng-if=" myForm.v_email.$touched && myForm.v_email.$error.required">البريد الإلكترونى حقل مطلوب</div>
+                                            </div>
+
+
+                                            <div class="col-lg-6">
+                                                <input  placeholder="رقم الهاتف" maxlength="9" ng-pattern='/^\+?\d{9}$/' name="v1_phone" ng-model="phone" class="input-small Man {{myForm.v1_phone.$error.required && myForm.v1_phone.$touched ?'border-danger':''}}" required>
+                                                <div class="row Woman" style="display:none">
+                                                    <div class="col-lg-10">
+                                                        <input  placeholder="رقم الهاتف"  maxlength="9" ng-pattern='/^\+?\d{9}$/' name="v2_phone" ng-model="phone" class="input-small  {{myForm.v2_phone.$error.required && myForm.v2_phone.$touched ?'border-danger':''}}" required>
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <input type="button" value="OTP" class="btn btn-default btn-sm" ng-click="OTPModal()" />
+                                                    </div>
+                                                </div>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v1_phone.$touched && myForm.v1_phone.$error.required || myForm.v2_phone.$touched && myForm.v2_phone.$error.required">رقم الهاتف هو حقل مطلوب</div>
+								                <div class="text-danger text-right validate" ng-show="myForm.v1_phone.$error.pattern">الرجاء إدخال رقم مكون من 9 أرقام</div>
+                                                <div class="text-danger text-right validate" ng-show="myForm.v2_phone.$error.pattern">الرجاء إدخال رقم مكون من 9 أرقام</div>
+
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <input type="password" placeholder=" الرقم السري بحد أقل 8 أحرف" class="input-small {{myForm.v_password.$error.required && myForm.v_password.$touched ?'border-danger':''}}" name="v_password" ng-model="password" ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/" required>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_password.$touched && myForm.v_password.$error.required"> كلمة المرور هو حقل مطلوب</div>
+                                                <div class="text-danger text-right validate" ng-show="myForm.v_password.$error.pattern">الرجاء إدخال كلمة مرور مكونة من ارحرف كبيرة وصغيرة وارقام ورموز</div>
+                                            </div>
+
+
+                                            <div class="col-lg-6">
+                                                <input type="password" placeholder="تأكيد الرقم السري" class="input-small {{myForm.v_con_password.$error.required && myForm.v_con_password.$touched ?'border-danger':''}}" name="v_con_password" ng-model="con_password" required>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_con_password.$touched && myForm.v_con_password.$error.required && myForm.v_password && myForm.v_con_password != myForm.v_password "> كلمة المرور غير متطابقة</div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <textarea class="input-small {{myForm.v_self_bio.$error.required && myForm.v_self_bio.$touched ?'border-danger':''}}" placeholder="إكتب وصف عن نفسك 150 حرف" name="v_self_bio" ng-model="self_bio" required></textarea>
+                                                <div class="text-danger text-right validate" ng-if=" myForm.v_self_bio.$touched && myForm.v_self_bio.$error.required"> وصف عن نفسك هو حقل مطلوب</div>
+                                            </div>
+
+                                            <div class="col-lg-6"> 
+                                                <textarea class="input-small {{myForm.v_part_bio.$error.required && myForm.v_part_bio.$touched ?'border-danger':''}}" placeholder="إكتب وصف عن شريكك الذي ترغب به 150 حرف" name="v_part_bio" ng-model="part_bio" required></textarea>
+                                                <div class="text-danger text-right validate" ng-if=" myForm.v_part_bio.$touched && myForm.v_part_bio.$error.required">وصف عن شريكك هو   حقل مطلوب</div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <button style="font-size: 17px;" class="button-submit" type="button" ng-click="tab='tab-body-3'"> الخطوة السابقة</button>
+                                            <button style="font-size: 17px;" class="button-submit" type="submit">  أنهاء التسجيل</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-body tab-body-3 {{ tab=='tab-body-3'?'active-body':'' }}" ng-show="tab=='tab-body-3'">
+                                    <div class="contact-form-white d-flex flex-column align-items-center element-form-left">
+                                        <div class="row">
+
+                                            <div class="col-lg-6" ng-init="skin_color = 'لون البشرة'">
+                                                <select class="form-control input-small {{myForm.v_skin_color.$error.required && myForm.v_skin_color.$touched ?'border-danger':''}}"  name="v_skin_color" ng-model="skin_color" required>
+                                                    <option selected disabled value="">لون البشرة</option>
+                                                    <option value="أبيض">  أبيض</option>
+                                                    <option>  أبيض على إحمرار</option>
+                                                    <option>   حنطي فاتح </option>
+                                                    <option>   حنطي على أسمرار</option>
+                                                    <option> أسمر داكن</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_skin_color.$error.required && myForm.v_skin_color.$touched">الرجاء تحديد لون البشرة      </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="religion='العقيدة'">
+                                                <select class="form-control input-small {{myForm.v_religion.$error.required && myForm.v_religion.$touched ?'border-danger':''}}" name="v_religion" ng-model="religion" required>
+                                                    <option selected disabled value="">العقيدة</option>
+                                                    <option value="أباضي">  أباضي</option>
+                                                    <option> سني</option>
+                                                    <option>  شيعي</option>
+                                                    <option>  غير ذلك</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_religion.$error.required && myForm.v_religion.$touched">الرجاء تحديد العقيدة      </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="smoker='هل تدخن'">
+                                                <select class="form-control input-small {{myForm.v_smoker.$error.required && myForm.v_smoker.$touched ?'border-danger':''}}" name="v_smoker" ng-model="smoker" required>
+                                                    <option selected disabled value="">هل تدخن</option>
+                                                    <option value="نعم">  نعم</option>
+                                                    <option> لا</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_smoker.$error.required && myForm.v_smoker.$touched">الرجاء تحديد هل تدخن     </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="finance='الوضع المادي'">
+                                                <select class="form-control input-small {{myForm.v_finance.$error.required && myForm.v_finance.$touched ?'border-danger':''}}" name="v_finance" ng-model="finance" required>
+                                                    <option selected disabled value="">الوضع المادي</option>
+                                                    <option value="ضعيف">  ضعيف</option>
+                                                    <option> جيد</option>
+                                                    <option> جيد جدا</option>
+                                                    <option> ممتاز</option>
+                                                    <option> ممتاز جدا</option>
+                                                    <option> لايوجد</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_finance.$error.required && myForm.v_finance.$touched">الرجاء تحديد الوضع المادي    </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="finance_alt='هل يوجد مصدر أخر للدخل المادي'">
+                                                <select class="form-control input-small {{myForm.v_finance_alt.$error.required && myForm.v_finance_alt.$touched ?'border-danger':''}}" name="v_finance_alt" ng-model="finance_alt" required>
+                                                    <option selected disabled value="">هل يوجد مصدر أخر للدخل المادي</option>
+                                                    <option value="نعم">  نعم</option>
+                                                    <option> لا</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_finance_alt.$error.required && myForm.v_finance_alt.$touched">الرجاء تحديد مصدر الدخل     </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="body_shape = 'البنية الجسمية'">
+                                                <select class="form-control input-small {{myForm.v_body_shape.$error.required && myForm.v_body_shape.$touched ?'border-danger':''}}" name="v_body_shape" ng-model="body_shape" required>
+                                                    <option selected disabled value="">البنية الجسمية</option>
+                                                    <option value="ضعيف">  ضعيف</option>
+                                                    <option> رشيق</option>
+                                                    <option> رياضي</option>
+                                                    <option> وزن زائد </option>
+                                                    <option> ضخم</option>
+                                                    <option> سمين</option>
+                                                    <option> جسم غير متناسق مع الطول</option>
+                                                    <option> غير ذلك</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_body_shape.$error.required && myForm.v_body_shape.$touched">الرجاء تحديد البنية الجسمية   </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="location_ftr_mrg = 'بعد الزواج سأسكن'">
+                                                <select class="form-control input-small {{myForm.location_ftr_mrg.$error.required && myForm.location_ftr_mrg.$touched ?'border-danger':''}}" name="v_location_ftr_mrg" ng-model="location_ftr_mrg" required>
+                                                    <option selected disabled value="">بعد الزواج سأسكن</option>
+                                                    <option value="مستقل">  مستقل</option>
+                                                    <option> في ملحق</option>
+                                                    <option>  منزل خاص</option>
+                                                    <option>   مع العائلة</option>
+                                                    <option>  لا أمانع</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_location_ftr_mrg.$error.required && myForm.v_location_ftr_mrg.$touched">الرجاء تحديد طريقة الزواج  </div>
+                                            </div>
+
+
+                                            <div class="col-lg-6" ng-init="marriage_type = 'طريقة الزواج'">
+                                                <select class="form-control input-small {{myForm.v_marriage_type.$error.required && myForm.v_marriage_type.$touched ?'border-danger':''}}" name="v_marriage_type" ng-model="marriage_type" required>
+                                                    <option selected disabled value="">  طريقة الزواج</option>
+                                                    <option value="عن طريق النظرة الشرعيه فقط">  عن طريق النظرة الشرعيه فقط</option>
+                                                    <option> عن طريق التعارف المسبق أولا</option>
+                                                    <option>كل ماسبق</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_marriage_type.$error.required && myForm.v_marriage_type.$touched">الرجاء تحديد طريقة الزواج  </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="marital_status = 'الحالة الإجتماعية'">
+                                                <select class="form-control input-small {{myForm.v_marital_status.$error.required && myForm.v_marital_status.$touched ?'border-danger':''}}" id="SocialDropDown" name="v_marital_status" ng-model="marital_status" ng-change="SocialDropDownChanged()">
+                                                    <option selected disabled value="">الحالة الإجتماعية</option>
+                                                    <option value="أعزب">  أعزب</option>
+                                                    <option value="2"> متزوج</option>
+                                                    <option value="3"> مطلق</option>
+                                                    <option value="4" class="Woman" > أرملة</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_marital_status.$error.required && myForm.v_marital_status.$touched">الرجاء تحديد  الحالة الاجتماعية </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="characteristic_of_marriage = 'صفة الزواج'">
+                                                <select class="form-control Maried input-small {{myForm.v_characteristic_of_marriage.$error.required && myForm.v_characteristic_of_marriage.$touched ?'border-danger':''}}" style="display: none;" name="v_characteristic_of_marriage" ng-model="characteristic_of_marriage" required>
+                                                    <option selected disabled value="">  صفة الزواج </option>
+                                                    <option value="الأولى">  الأولى</option>
+                                                    <option> الثانية</option>
+                                                    <option> الثالثة</option>
+                                                    <option> أرملة</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_characteristic_of_marriage.$error.required && myForm.v_characteristic_of_marriage.$touched">الرجاء تحديد  صفة الزواج</div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="mult_marriage='ترغب في تعدد الزوجات'">
+                                                <select class="form-control Maried input-small" name="v_mult_marriage" ng-model="mult_marriage" style="display: none;" required>
+                                                    <option selected disabled value="">ترغب في تعدد الزوجات</option>
+                                                    <option value="نعم">  نعم</option>
+                                                    <option> لا</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_mult_marriage.$error.required && myForm.v_mult_marriage.$touched">الرجاء تحديد خيار </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <input type="number" placeholder="عدد الأبناء" min="0" max="10" class="input-small Maried {{myForm.v_num_sone.$error.required && myForm.v_num_sone.$touched ?'border-danger':''}}" name="v_num_sone" ng-model="num_sone" style="display: none;" required>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_num_sone.$error.required && myForm.v_num_sone.$touched">عدد الأبناء هو حقل مطلوب</div>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_num_sone.$valid">الحد 10 أبناء</div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <button style="font-size: 17px;" class="button-submit" type="button" ng-click="tab='tab-body-2'"> الخطوة السابقة</button>
+                                            <button style="font-size: 17px;" class="button-submit" type="button" ng-click="tab='tab-body-4'"> الخطوة التالية</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="tab-body tab-body-2 {{ tab =='tab-body-2'?'active-body':'' }}" ng-show="tab=='tab-body-2'">
+                                    <div class="contact-form-white d-flex flex-column align-items-center element-form-left">
+                                        <div class="row">
+
+                                            <div class="col-lg-3">
+                                                <input type="number" ng-model="height" name="v_height" placeholder="الطول سم" class="input-small {{myForm.v_height.$error.required && myForm.v_height.$touched ?'border-danger':''}}" required>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_height.$error.required && myForm.v_height.$touched">الطول هو حقل مطلوب</div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <input type="number" placeholder="الوزن كجم" ng-model="weight" name="v_weight" class="input-small {{myForm.v_weight.$error.required && myForm.v_weight.$touched ?'border-danger':''}}" required>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_weight.$error.required && myForm.v_weight.$touched">الوزن هو حقل مطلوب</div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="race='الأصل العرقي'">
+                                                <select class="form-control input-small {{myForm.v_race.$error.required && myForm.v_race.$touched ?'border-danger':''}}" id="DropDown2" name="v_race" ng-model="race" ng-change="ShowDiv2()" required>
+                                                    <option selected disabled value="">الأصل العرقي</option>
+                                                    <option value="1"> رقم 1 (الوالدان أصل وفصل)</option>
+                                                    <option value="2"> رقم 2 (أحد الوالدن أصل وفصل)</option>
+                                                    <option value="3">  رقم 3 (الوالدان من البشرة السمراء)</option>
+                                                    <option value="4">  بيسر 1 (عرق مخلوط من نسل أبيض البشره)</option>
+                                                    <option value="6">بيسر 2 (عرق مخلوط من نسل أسمر البشره)</option>
+                                                    <option value="7">بيسر 3 (عرق مخلوط من نسل مخلوط البشره)</option>
+                                                    <option value="5">  غير ذلك</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_race.$error.required && myForm.v_race.$touched">الرجاء تحديد الاصل العرقي</div>
+                                            </div>
+
+                                            <div class="col-lg-6" id="Div2" style="display:none" ng-init="race2='إختر أيهما'">
+                                                <select class="form-control input-small {{myForm.v_race2.$error.required && myForm.v_race2.$touched ?'border-danger':''}}" name="v_race2" ng-model="race2" required>
+                                                    <option selected disabled value="">إختر أيهما </option>
+                                                    <option value="الأب"> الأب</option>
+                                                    <option value="الأم">الأم </option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_race2.$error.required && myForm.v_race2.$touched">الرجاء تحديد أصل الوالدان </div>
+                                            </div>
+
+                                            <div class="col-lg-6" id="Div5" style="display:none" ng-init="race3='ألاصل العرقي غير ذلك'">
+                                                <select class="form-control input-small {{myForm.v_race3.$error.required && myForm.v_race3.$touched ?'border-danger':''}}" name="v_race3" ng-model="race3" required>
+                                                    <option selected disabled value=""> الأصل العرقي غير ذلك</option>
+                                                    <option value="بلوشي">بلوشي </option>
+                                                    <option value="سواحيلي">سواحيلي </option>
+                                                    <option value="شيعي">شيعي </option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_race3.$error.required && myForm.v_race3.$touched">الرجاء تحديدالاصل العرقي غير ذلك </div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="education='المؤهل العلمي'">
+                                                <select class="form-control input-small {{myForm.v_education.$error.required && myForm.v_education.$touched ?'border-danger':''}}" name="v_education" ng-model="education" required>
+                                                    <option selected disabled  value="">المؤهل العلمي </option>
+                                                    <option value="دكتوراه"> دكتوراه</option>
+                                                    <option value="ماجستير"> ماجستير</option>
+                                                    <option value="بكالوريوس">  بكالوريوس</option>
+                                                    <option value="دبلوم جامعي">  دبلوم جامعي</option>
+                                                    <option value="دبلوم عام">   دبلوم عام</option>
+                                                    <option value="ثانوية">  </option>
+                                                    <option value="إعدادية">  إعدادية</option>
+                                                    <option value="غير ذلك">  غير ذلك</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_education.$error.required && myForm.v_education.$touched">الرجاء تحديد المؤهل العلمي</div>
+                                            </div>
+
+                                            <div class="col-lg-6" ng-init="employee=gender">
+                                                <select class="form-control input-small {{myForm.v_employee.$error.required && myForm.v_employee.$touched ?'border-danger':''}}" name="v_employee" ng-model="employee" required> 
+                                                    <option selected disabled value="">{{gender==false ? 'هل انتـي موظفة ؟' : 'هل  انته موظف ؟'}}</option>
+                                                    <option value="قطاع حكومي"> قطاع حكومي</option>
+                                                    <option value="قطاع خاص"> قطاع خاص</option>
+                                                    <option value="باحث عن عمل">  باحث عن عمل</option>
+                                                    <option value="متقاعد">   متقاعد</option>
+                                                    <option value="لا أرغب بالعمل">   لا أرغب بالعمل </option>
+                                                    <option ng-show="gender==false" value="ربة منزل">  ربة منزل</option>
+                                                </select>
+                                                <div class="text-danger text-right validate" ng-if="myForm.v_employee.$error.required && myForm.v_employee.$touched">هذا الحقل مطلوب</div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <button style="font-size: 17px;" class="button-submit" type="button" ng-click="tab='tab-body-1'"> الخطوة السابقة</button>
+                                            <button style="font-size: 17px;" class="button-submit" type="button" ng-click="tab='tab-body-3'"> الخطوة التالية</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-body tab-body-1 {{ tab=='tab-body-1'?'active-body':'' }}" ng-show="tab=='tab-body-1'">
+                                            <div class="contact-form-white d-flex flex-column align-items-center element-form-left">
+                                                <div class="form-group c-keyline-text" style="text-align:center;">
+                                                    <h6 style="text-align:center">أختر جنسك أولا</h6>
+                                                    <label><input type="radio" name="Gender" ng-model="gender" id="Gender1" value="true" checked="" class="radio-inline" onchange="Check(1)"></label>
+                                                    <a ng-click="Check(1)"><img src="./img/m.png" class="img-circle" id="M" style="opacity: 0.7;"></a>
+                                                    <label><input type="radio" name="Gender" id="Gender2" ng-model="gender" value="false" class="radio-inline" onchange="Check(2)"></label>
+                                                    <a ng-click="Check(2)"><img src="./img/f.png" style="opacity: 1;" class="img-circle" id="F"></a>
+                                                </div>
+                                                <div class="row">
+                                                    
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <input type="text" ng-model="full_name"  name="v_full_name"  placeholder="الإسم الثلاثي" class="input-small {{myForm.v_full_name.$error.required && myForm.v_full_name.$touched ?'border-danger':''}}" required>
+                                                        <div class="text-danger text-right validate" ng-if="myForm.v_full_name.$error.required && myForm.v_full_name.$touched">الاسم هو حقل مطلوب</div>
+
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6" ng-init="country='البلد'">
+                                                        <select class="form-control input-small {{myForm.v_country.$error.required && myForm.v_country.$touched ?'border-danger':''}}" ng-model="country" name="v_country" required>
+                                                            <option selected value="" disabled>البلد</option>
+                                                            <option value="جمهوريّة مصر العربية">جمهوريّة مصر العربية</option>
+                                                            <option value="جمهوريّة السودان">جمهوريّة السودان</option>
+                                                            <option value="الجمهوريّة العربيّة السوريّة">الجمهوريّة العربيّة السوريّة</option>
+                                                            <option value="الجمهوريّة التونسيّة">الجمهوريّة التونسيّة</option>
+                                                            <option value="جمهوريّة الصومال">جمهوريّة الصومال</option>
+                                                            <option value="الجمهوريّة الجزائريّة الديمقراطيّة الشعبيّة">الجمهوريّة الجزائريّة الديمقراطيّة الشعبيّة</option>
+                                                            <option value="المملكة المغربيّة">المملكة المغربيّة</option>
+                                                            <option value="جمهوريّة العراق">جمهوريّة العراق</option>
+                                                            <option value="المملكة العربيّة السعوديّة">المملكة العربيّة السعوديّة</option>
+                                                            <option value="الجمهوريّة اليمنيّة">الجمهوريّة اليمنيّة</option>
+                                                            <option value="دولة ليبيا">دولة ليبيا</option>
+                                                            <option value="المملكة الأردنيّة الهاشميّة">المملكة الأردنيّة الهاشميّة</option>
+                                                            <option>دولة الإمارات العربيّة المتّحدة</option>
+                                                            <option>الجمهوريّة اللبنانيّة</option>
+                                                            <option>الجمهوريّة الإسلاميّة الموريتانيّة</option>
+                                                            <option>دولة الكويت</option>
+                                                            <option>سطنة عُمان</option>
+                                                            <option>دولة قطر</option>
+                                                            <option>جمهوريّة جيبويتي</option>
+                                                            <option>مملكة البحرين</option>
+                                                            <option>جمهوريّة القمر الاتّحاديّة الإسلاميّة</option>
+                                                            <option>دولة فلسطين المحتلّة</option>
+                                                        </select>
+                                                        <div class="text-danger text-right validate" ng-if="myForm.v_country.$error.required && myForm.v_country.$touched">يجب اختيار الدولة</div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" ng-model="passport_id" name="v_passport_id" ng-maxlength="9" placeholder=" رقم الهوية / الجواز" class="input-small {{myForm.v_passport_id.$error.required && myForm.v_passport_id.$touched ?'border-danger':''}}" required>
+                                                        <div class="text-danger text-right validate" ng-if="myForm.v_passport_id.$error.required && myForm.v_passport_id.$touched">رقم الهوية / الجواز هو حقل مطلوب</div>
+                                                        <div class="text-danger text-right validate" ng-if="myForm.v_passport_id.$valid">الحد 9 ارقام</div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input type="date" ng-model="passport_expire" name="v_passport_expire" placeholder=" تاريخ الميلاد" class="input-small {{myForm.v_passport_expire.$error.required && myForm.v_passport_expire.$touched ?'border-danger':''}}" required>
+                                                        <div class="text-danger text-right validate" ng-if="myForm.v_passport_expire.$error.required && myForm.v_passport_expire.$touched">تاريخ انتهاء الجواز</div>
+                                                    </div>
+                                                </div>
+                                                <button style="font-size: 17px;" class="button-submit" type="button" ng-click="tab='tab-body-2';Register()"> الخطوة التالية</button>
+
+                                        </div>
+                                </div>
+                                
+                            </div>
+                        </form>    
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+ 
+</div>
+
+    <div class="modal" id="OTPModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">أدخل كود ال OTP</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" value="" class="form-control" placeholder="OTP Code" />
+                    <a href="#">لم يصل الكود أرسل مره أخري</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">تسجيل</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">أغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+ 
