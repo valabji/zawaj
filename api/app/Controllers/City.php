@@ -42,16 +42,16 @@ class City extends ResourceController
     }
     public function update($id = null)
     {
-        $name = $this->request->getVar("name");
         $data = [
-            'name' => $name,
+            'name' => $this->request->getVar("name"),
+            'value' => $this->request->getVar("value")
         ];
         $st = new CityModel();
         $ok = $st->update($id,$data);
         http_response_code(200);
         $res = [
             'success' => $ok,
-            'data' => $name,
+            'data' => $data,
             'msg' => 'Data Updated'
         ];
         return $this->response->setJSON($res);
