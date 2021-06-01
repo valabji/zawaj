@@ -38,6 +38,7 @@ class UserModel extends Model
         'self_bio',
         'part_bio',
         'profile_photo',
-        'token'
+        'token',
+        'age'
     ];
 }

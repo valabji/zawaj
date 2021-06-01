@@ -38,6 +38,7 @@ $routes->get('users','Users::index');
 $routes->get('users/search','Users::search');
 $routes->post('users','Users::create');
 $routes->patch('users/(:num)','Users::update/$1');
+$routes->patch('users/setblock/(:num)','Users::setblock/$1');
 $routes->delete('users/(:num)','Users::delete/$1');
 $routes->post('users/login','Users::login');
 $routes->options('(:any)', 'Users::options');

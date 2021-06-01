@@ -67,6 +67,7 @@ class Users extends ResourceController
             'self_bio' => $this->request->getVar('self_bio'),
             'part_bio' => $this->request->getVar('part_bio'),
             'profile_photo' => $this->request->getVar('profile_photo'),
+            'age' => $this->request->getVar('age'),
         ];
         $st = new UserModel();
         $ok = $st->save($data);
@@ -112,6 +113,7 @@ class Users extends ResourceController
             'self_bio' => $this->request->getVar('self_bio'),
             'part_bio' => $this->request->getVar('part_bio'),
             'profile_photo' => $this->request->getVar('profile_photo'),
+            'age' => $this->request->getVar('age'),
         ];
         $st = new UserModel();
         $ok = $st->update($id, $data);
@@ -191,6 +193,8 @@ class Users extends ResourceController
         http_response_code(200);
         return $this->response->setJSON($res);
     }
+
+
 
     public function search()
     {
@@ -335,6 +339,19 @@ class Users extends ResourceController
         $res = [
             'success' => true,
             'data' => $data2,
+        ];
+        return $this->response->setJSON($res);
+    }
+
+    public function setblock($id = null)
+    {
+        $db = db_connect();
+        $blocked = $this->request->getVar('blocked');
+        $cn = $db->query("update user set blocked ='$blocked' where id=$id");
+        http_response_code(200);
+        $res = [
+            'success' => $cn,
+            'msg' => 'Data Updated',
         ];
         return $this->response->setJSON($res);
     }
