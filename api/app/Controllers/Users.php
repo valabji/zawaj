@@ -134,24 +134,23 @@ class Users extends ResourceController
         return $this->response->setJSON($res);
     }
 
-    public function auth(){
+    public function auth()
+    {
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
-        $token = explode(" ", $token)[1];
+        $token = explode(' ', $token)[1];
         $st = new UserModel();
-        $data = $st
-            ->where('token', $token)
-            ->findAll();
+        $data = $st->where('token', $token)->findAll();
         $res = [
             'success' => false,
-            'msg' => 'Invalid Token'
+            'msg' => 'Invalid Token',
         ];
-        if (sizeof($data)>=1) {
-        $data = $data[0];
-        $id = $data['id'];
-        $pass = $data['password'];
-        unset($data['password']);
-        unset($data['token']);
+        if (sizeof($data) >= 1) {
+            $data = $data[0];
+            $id = $data['id'];
+            $pass = $data['password'];
+            unset($data['password']);
+            unset($data['token']);
             $res = [
                 'success' => true,
                 'data' => $data,
@@ -174,7 +173,7 @@ class Users extends ResourceController
         $token = $generator->generate(32);
         $data['token'] = $token;
         $data2 = [
-            'token' => $token
+            'token' => $token,
         ];
         $st = new UserModel();
         $ok = $st->update($id, $data2);
@@ -192,11 +191,34 @@ class Users extends ResourceController
         return $this->response->setJSON($res);
     }
 
+    public function search()
+    {
+        $st = new UserModel();
+        $where = "true";
+        $data = $st->where($where)->findAll();
+        $data2 = [];
+        foreach ($data as $item) {
+            unset($item['password']);
+            unset($item['token']);
+            array_push($data2, $item);
+        }
+        http_response_code(200);
+        $res = [
+            'success' => true,
+            'data' => $data2,
+        ];
+        return $this->response->setJSON($res);
+    }
+
     public function options(): Response
     {
-        return $this->response->setHeader('Access-Control-Allow-Origin', '*') //for allow any domain, insecure
+        return $this->response
+            ->setHeader('Access-Control-Allow-Origin', '*') //for allow any domain, insecure
             ->setHeader('Access-Control-Allow-Headers', '*') //for allow any headers, insecure
-            ->setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT,PATCH, DELETE') //method allowed
+            ->setHeader(
+                'Access-Control-Allow-Methods',
+                'GET, POST, OPTIONS, PUT,PATCH, DELETE'
+            ) //method allowed
             ->setStatusCode(200); //status code
     }
 }
