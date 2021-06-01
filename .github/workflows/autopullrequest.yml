@@ -10,12 +10,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Update
-        run: |
-          curl -o git-chglog -L https://github.com/git-chglog/git-chglog/releases/download/0.9.1/git-chglog_linux_amd64
-          chmod u+x git-chglog
-          ./git-chglog -o CHANGELOG.md
-          rm git-chglog
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
