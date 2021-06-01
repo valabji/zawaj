@@ -51,7 +51,7 @@ angular.module("myApp")
             $scope.bundle_id = ID
             $ModalService.OpenModal(ModalName)
         }
-
+        
         $scope.DelBundle = function (ModalName) {
             $.ajax({
                 method: 'delete',

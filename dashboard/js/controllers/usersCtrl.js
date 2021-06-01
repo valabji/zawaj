@@ -1,144 +1,83 @@
 angular.module("myApp")
-    .controller("usersCtrl",function ($scope,$rootScope,$http,$state,$timeout,$st,API_URL,Auth,AUTH_EVENTS,USER_ROLES) {
+    .controller("usersCtrl",function ($scope,$rootScope,$http,$state,$timeout,$ModalService,API_URL,Auth,AUTH_EVENTS,USER_ROLES) {
  
  
       $scope.modalShown = false;
-	var showLoginDialog = function() {
-		if(!$scope.modalShown){
-		 
-		}
-	};
-	
-	var setCurrentUser = function(){
-        $scope.currentUser = $rootScope.currentUser;
-        
-	}
-	
-	var showNotAuthorized = function(){
-		alert("Not Authorized");
-	}
-	
-	$scope.currentUser = null;
-	$scope.userRoles = USER_ROLES;
-	$scope.isAuthorized = Auth.isAuthorized;
-
-	//listen to events of unsuccessful logins, to run the login dialog
-	$rootScope.$on(AUTH_EVENTS.notAuthorized, showNotAuthorized);
-	$rootScope.$on(AUTH_EVENTS.notAuthenticated, showLoginDialog);
-	$rootScope.$on(AUTH_EVENTS.sessionTimeout, showLoginDialog);
-	$rootScope.$on(AUTH_EVENTS.logoutSuccess, showLoginDialog);
-	$rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);
-	
-  
-
-
-    $scope.get_users=function(){
-        $(".loadersmart").fadeIn("slow");
-            $http.get(API_URL + "users")
-            .then(function(resp){
-                $scope.users = resp.data.data
-                console.log($scope.users)
-            }, function (e) {
-            toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
-        })
-    }
-
-
-    $scope.get_users()
-
-
-       $scope.data1=[];
-       $scope.data2=[];
-       $scope.data3=[];
-       $scope.changeRolesA=function(user_id,adding){
-           console.log(adding)
-           $http.post("api/changeRoles.php",{
-               role:adding,
-               user_id:user_id,
-               whoami:"adding"
-           })
-           .then(function(resp){
-               if(resp.data.status){
-                $scope.get_users() 
-                toastr.success(' تم تعديل صلاحية الاضافة ', "العملية :  إضافة صلاحية", {timeOut: 2000})
-            }else{
-                toastr.error('لم تم تعديل صلاحية الاضافة ', "العملية :  إضافة صلاحية", {timeOut: 2000})
-               }
-           }, function (e) {
-            toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
-        })
-       }
-
-
-       $scope.changeRolesD=function(user_id,del){
-        $http.post("api/changeRoles.php",{
-            role:del,
-            user_id:user_id,
-            whoami:"del"
-        })
-        .then(function(resp){
-            if(resp.data.status){
-             $scope.get_users() 
-             toastr.success(' تم تعديل صلاحية الحذف ', "العملية :  إضافة صلاحية", {timeOut: 2000})
-             
-            }else{
-                toastr.error('لم تم تعديل صلاحية الحذف ', "العملية :  إضافة صلاحية", {timeOut: 2000})
+        var showLoginDialog = function() {
+            if(!$scope.modalShown){
+            
             }
-        }, function (e) {
-            toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
-        })
-    }
-
-        $scope.changeRolesE=function(user_id,edit){
-            $http.post("api/changeRoles.php",{
-                role:edit,
-                user_id:user_id,
-                whoami:"edit"
-            })
-            .then(function(resp){
-                if(resp.data.status){
-                 $scope.get_users() 
-                 toastr.success(' تم تعديل صلاحية التعديل ', "العملية :  إضافة صلاحية", {timeOut: 2000})
-                 
-                }else{
-                    toastr.error('لم تم تعديل صلاحية التعديل ', "العملية :  إضافة صلاحية", {timeOut: 2000})
-                }
-            }, function (e) {
-                toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
-            })
+        };  
+	
+        var setCurrentUser = function(){
+            $scope.currentUser = $rootScope.currentUser;
+            
         }
+        
+        var showNotAuthorized = function(){
+            alert("Not Authorized");
+        }
+        
+        $scope.currentUser = null;
+        $scope.userRoles = USER_ROLES;
+        $scope.isAuthorized = Auth.isAuthorized;
+
+        //listen to events of unsuccessful logins, to run the login dialog
+        $rootScope.$on(AUTH_EVENTS.notAuthorized, showNotAuthorized);
+        $rootScope.$on(AUTH_EVENTS.notAuthenticated, showLoginDialog);
+        $rootScope.$on(AUTH_EVENTS.sessionTimeout, showLoginDialog);
+        $rootScope.$on(AUTH_EVENTS.logoutSuccess, showLoginDialog);
+        $rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);
+        
     
-        $scope.add_user_md=function(){
-            $("#add_user_md").modal("show");
-        }
 
-        $scope.add_user=function(){
-            $http.post("api/add_user.php",{
-                user_name:$scope.user_name,
-                name:$scope.name,
-                pass:$scope.pass
-            }).then(function(resp){
-                if(resp.data.status){
-                    toastr.success(' تم إضافة مستخدم جديد', "العملية : إضافة مستخدم", {timeOut: 2000})
-                    $scope.get_users() 
-                    $("#add_user_md").modal("hide");
 
-                    $http.post("api/active_user.php",{
-                        user_name:$scope.user_name
-                    }).then(function(resp){
-                        if(resp.data.status)
-                        {
-                            toastr.warning(' تمت عملية إضافة الصلاحيات', "-", {timeOut: 3000})
-                            $scope.get_users() 
-                        }
-                    })
-                }else{
-                    toastr.warning('هذا المستخدم مسجل من قبل', "-", {timeOut: 3000})
-                }
-            }, function (e) {
+        $scope.get_users=function(){
+            $(".loadersmart").fadeIn("slow");
+                $http.get(API_URL + "users")
+                .then(function(resp){
+                    $scope.users = resp.data.data
+                    console.log($scope.users)
+                }, function (e) {
                 toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
             })
         }
+
+
+        $scope.get_users()
+            
+        $scope.ViewUser = function (user, ModalName) {
+            $scope.fullname = user.fullname
+            $scope.email = user.email
+            $scope.country = user.country
+            $scope.passport_id = user.passport_id
+            $scope.passport_expire = user.passport_expire
+            $scope.height = user.height
+            $scope.weight = user.weight
+            $scope.race = user.race
+            $scope.race2 = user.race2
+            $scope.race3 = user.race3
+            $scope.education = user.education
+            $scope.employee = user.employee
+            $scope.skin_color = user.skin_color
+            $scope.religion = user.religion
+            $scope.smoker = user.smoker
+            $scope.finance = user.finance
+            $scope.finance_alt = user.finance_alt
+            $scope.body_shape = user.body_shape
+            $scope.location_ftr_mrg = user.location_ftr_mrg
+            $scope.marriage_type = user.marriage_type
+            $scope.characteristic_of_marriage = user.characteristic_of_marriage
+            $scope.mult_marriage = user.mult_marriage
+            $scope.num_sone = user.num_sone
+            $scope.phone = user.phone
+            $scope.self_bio = user.self_bio
+            $scope.part_bio = user.part_bio
+            $ModalService.OpenModal(ModalName)
+        } 
+
+
+
 
         $scope.update_user_md=function(id,user,name){
             $scope.sname=name

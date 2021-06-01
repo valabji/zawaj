@@ -1,5 +1,5 @@
 angular.module("myApp")
-    .controller("SocialIndexCtrl",function ($scope,$rootScope,$http,$state,$timeout,$st,API_URL) {
+    .controller("SocialIndexCtrl",function ($scope,$rootScope,$http,$state,$timeout,$ModalService,API_URL) {
 
 
         
@@ -18,14 +18,12 @@ angular.module("myApp")
 
         $scope.get_settings()
 
-        $scope.OpenModal = function (ModalName) {
+        $scope.AddSettingsModal = function (ModalName) {
             $(ModalName).modal('show')
         }
 
 
-         $scope.HideModal = function (ModalName) {
-            $(ModalName).modal('hide')    
-        }
+        
 
         $scope.AddSettings = function (ModalName) {
             $.ajax({
@@ -40,10 +38,47 @@ angular.module("myApp")
                     if (data.success) {
                         toastr.success('تم العملية بنجاح', { timeOut: 1500 })
                         $scope.get_settings()
-                        $scope.HideModal(ModalName)
+                        $scope.name = ""
+                        $scope.value = ""
+                        $ModalService.HideModal(ModalName)
                     }
                 }
             })
+        }
+
+        $scope.ConfirmeDelSettings = function (ID, ModalName) {
+            $scope.Settings_id = ID
+            $ModalService.OpenModal(ModalName)
+        }
+
+
+        $scope.ConfirmeUpdateSetting = function (setting,ModalName) {
+            $ModalService.OpenModal(ModalName)
+            $scope.setting_id = setting.id
+            $scope.update_name = setting.name
+            $scope.update_value = setting.value
+        }
+
+
+        $scope.UpdateSetting = function (ModalName) {
+            if ($scope.update_name && $scope.update_value) {
+                $http.patch(API_URL + "settings/" + $scope.setting_id, {
+                    name: $scope.update_name,
+                    value : $scope.update_value
+                }).then(function (data) {
+                    if (data.success) {
+                        toastr.success('تم  التعديل   بنجاح', { timeOut: 1500 })
+                        $scope.update_name = ""
+                        $scope.update_value = ""
+                        $scope.get_settings()
+                        $ModalService.HideModal(ModalName)
+                    }
+                }, function (e) {
+                toastr.error('لا يوجد اتصال بالانترنت', {timeOut: 2000})
+                })
+            } else {
+                toastr.error('البيانات غير مكتملة', { timeOut: 2000 , positionClass : "toast-top-center" })  
+            }
         }
 
     })

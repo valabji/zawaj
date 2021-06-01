@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title" style="text-align:center;">وسائل التواصل</h4>
-                <input type="button" class="btn btn-primary btn-sm" ng-click="OpenModal('#AddSettings')" style="float:left;margin-top: -34px;margin-bottom: -20px;" value="إضافة">
+                <input type="button" class="btn btn-primary btn-sm" ng-click="AddSettingsModal('#AddSettings')" style="float:left;margin-top: -34px;margin-bottom: -20px;" value="إضافة">
 
             </div>
             <div class="card-body">
@@ -42,8 +42,8 @@
                                         {{setting.value}}
                                     </td>
                                     <td>
-                                        <a ng-click="UpdateSettingModel(setting.id,setting.name,setting.value,'#UpdateSetting')"><i class="fa fa-edit fa-lg"></i></a>
-                                        <a ng-click="ConfirmeDelBundle(setting.id,'#DelBundle')"><i class="fa fa-trash fa-lg text-danger"></i></a>
+                                        <button class="btn btn-primary btn-sm" ng-click="UpdateSettingModel(setting.id,setting.name,setting.value,'#UpdateSetting')"><i class="fa fa-edit fa-lg"></i></button>
+                                        <!-- <button class="btn btn-danger btn-sm" ng-click="ConfirmeDelBundle(setting.id,'#DelBundle')"><i class="fa fa-trash fa-lg text-danger"></i></button> -->
                                     </td>
                                 </tr>
                                
@@ -62,7 +62,7 @@
 
 
 
-<!-- Add Bunble-->
+<!-- Add Setting-->
 <div class="modal" id="UpdateSetting" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -77,11 +77,11 @@
                     <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text" ng-model="name" placeholder="إسم المنصة">
+                                    <input class="form-control" type="text" ng-model="update_name" placeholder="إسم المنصة">
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input class="form-control" type="url" ng-model="value" placeholder="الرابط">
+                                    <input class="form-control" type="text" ng-model="update_value" placeholder="الرابط">
                                 </div>
 
                             </div>
@@ -101,7 +101,7 @@
         </div>
     </div>
 </div>
-<!-- Add Bunble-->
+<!-- Add Setting-->
 
 
 
