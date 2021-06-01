@@ -14,7 +14,7 @@ use App\Models\UserModel;
 class Users extends ResourceController
 {
     use ResponseTrait;
-    
+
     public function index()
     {
         $st = new UserModel();
@@ -195,11 +195,140 @@ class Users extends ResourceController
     public function search()
     {
         $db = db_connect();
-        $cn = $db->query("select * from user");
+        $where = ' true ';
+
+        ////// Queries
+
+        $gender = $this->request->getVar('gender');
+        if ($gender != '') {
+            $where .= " AND gender = $gender";
+        }
+        $fullname = $this->request->getVar('fullname');
+        if ($fullname != '') {
+            $where .= " AND fullname = $fullname";
+        }
+        $country = $this->request->getVar('country');
+        if ($country != '') {
+            $where .= " AND country = $country";
+        }
+        $passport_id = $this->request->getVar('passport_id');
+        if ($passport_id != '') {
+            $where .= " AND passport_id = $passport_id";
+        }
+        $passport_expire = $this->request->getVar('passport_expire');
+        if ($passport_expire != '') {
+            $where .= " AND passport_expire = $passport_expire";
+        }
+        $height = $this->request->getVar('height');
+        if ($height != '') {
+            $where .= " AND height = $height";
+        }
+        $weight = $this->request->getVar('weight');
+        if ($weight != '') {
+            $where .= " AND weight = $weight";
+        }
+        $race = $this->request->getVar('race');
+        if ($race != '') {
+            $where .= " AND race = $race";
+        }
+        $race2 = $this->request->getVar('race2');
+        if ($race2 != '') {
+            $where .= " AND race2 = $race2";
+        }
+        $race3 = $this->request->getVar('race3');
+        if ($race3 != '') {
+            $where .= " AND race3 = $race3";
+        }
+        $education = $this->request->getVar('education');
+        if ($education != '') {
+            $where .= " AND education = $education";
+        }
+        $employee = $this->request->getVar('employee');
+        if ($employee != '') {
+            $where .= " AND employee = $employee";
+        }
+        $skin_color = $this->request->getVar('skin_color');
+        if ($skin_color != '') {
+            $where .= " AND skin_color = $skin_color";
+        }
+        $religion = $this->request->getVar('religion');
+        if ($religion != '') {
+            $where .= " AND religion = $religion";
+        }
+        $smoker = $this->request->getVar('smoker');
+        if ($smoker != '') {
+            $where .= " AND smoker = $smoker";
+        }
+        $finance = $this->request->getVar('finance');
+        if ($finance != '') {
+            $where .= " AND finance = $finance";
+        }
+        $finance_alt = $this->request->getVar('finance_alt');
+        if ($finance_alt != '') {
+            $where .= " AND finance_alt = $finance_alt";
+        }
+        $body_shape = $this->request->getVar('body_shape');
+        if ($body_shape != '') {
+            $where .= " AND body_shape = $body_shape";
+        }
+        $location_ftr_mrg = $this->request->getVar('location_ftr_mrg');
+        if ($location_ftr_mrg != '') {
+            $where .= " AND location_ftr_mrg = $location_ftr_mrg";
+        }
+        $marriage_type = $this->request->getVar('marriage_type');
+        if ($marriage_type != '') {
+            $where .= " AND marriage_type = $marriage_type";
+        }
+        $marital_status = $this->request->getVar('marital_status');
+        if ($marital_status != '') {
+            $where .= " AND marital_status = $marital_status";
+        }
+        $characteristic_of_marriage = $this->request->getVar(
+            'characteristic_of_marriage'
+        );
+        if ($characteristic_of_marriage != '') {
+            $where .= " AND characteristic_of_marriage = $characteristic_of_marriage";
+        }
+        $mult_marriage = $this->request->getVar('mult_marriage');
+        if ($mult_marriage != '') {
+            $where .= " AND mult_marriage = $mult_marriage";
+        }
+        $num_sone = $this->request->getVar('num_sone');
+        if ($num_sone != '') {
+            $where .= " AND num_sone = $num_sone";
+        }
+        $email = $this->request->getVar('email');
+        if ($email != '') {
+            $where .= " AND email = $email";
+        }
+        $phone = $this->request->getVar('phone');
+        if ($phone != '') {
+            $where .= " AND phone = $phone";
+        }
+        $password = $this->request->getVar('password');
+        if ($password != '') {
+            $where .= " AND password = $password";
+        }
+        $self_bio = $this->request->getVar('self_bio');
+        if ($self_bio != '') {
+            $where .= " AND self_bio = $self_bio";
+        }
+        $part_bio = $this->request->getVar('part_bio');
+        if ($part_bio != '') {
+            $where .= " AND part_bio = $part_bio";
+        }
+        $profile_photo = $this->request->getVar('profile_photo');
+        if ($profile_photo != '') {
+            $where .= " AND profile_photo = $profile_photo";
+        }
+
+        ////// Queries END
+
+        $cn = $db->query("select * from user where $where");
         $data = $cn->getResult();
         $data = json_encode($data);
-        $data = json_decode($data,true);
-        $where = "true";
+        $data = json_decode($data, true);
+        $where = 'true';
         $data2 = [];
         foreach ($data as $item) {
             unset($item['password']);
