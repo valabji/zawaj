@@ -1,9 +1,37 @@
+
+
 angular.module("myApp")
-    .controller("RegisterCtrl",function ($scope,$rootScope,$http,$state,$timeout,$st,API_URL) {
-    
+    .controller("RegisterCtrl",function ($scope,$rootScope,$http,$state,$timeout,$UploadService,API_URL,Upload) {
+        $scope.delete_url = ""
+
+        $scope.test = function (file) {
+            $scope.progress = 0
+            upload = Upload.upload({
+              url:'https://api.imgbb.com/1/upload?expiration=600&key=17e94a4340cfa4eb222d6edc94b89b2e',
+              data: {
+                  image:file,
+                }
+            });
+        
+            upload.then(function (resp) {
+                console.log(resp)
+                console.log(resp.data.data.display_url)
+                $scope.display_url = resp.data.data.display_url
+                $scope.delete_url = resp.data.data.delete_url
+            }, function (response) {
+                ///
+            }, function (evt) {
+              // Math.min is to fix IE which reports 200% sometimes
+                $scope.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
+        }
+        
+
+     
+        
         $scope.SocialDropDownChanged = function()
         {
-            if($("#SocialDropDown option:selected").val() == "2")
+            if($("#SocialDropDown option:selected").val() == "متزوج")
             {
                 $('.Maried').show();
             }
@@ -83,19 +111,44 @@ angular.module("myApp")
         }
 
         $("#avatar_file img").click(function () {
-            alert(this.src)
-            $scope.avatar_url = this.src
+            $scope.picFile = this.src
+            if ($scope.delete_url) {
+                $UploadService.remove($scope.delete_url)
+                alert("call Delete")
+                $scope.delete_url = ""
+            } else {
+                $scope.getBase64FromImageUrl(this.src) 
+            }
         });
+
+        $scope.getBase64FromImageUrl =function(url) {
+            var img = new Image();
+
+            img.setAttribute('crossOrigin', 'anonymous');
+
+            img.onload = function () {
+                var canvas = document.createElement("canvas");
+                canvas.width =this.width;
+                canvas.height =this.height;
+
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(this, 0, 0);
+
+                var dataURL = canvas.toDataURL("image/png");
+                $scope.test(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
+            };
+
+            img.src = url;
+        }
     
         $scope.ShowDiv2 = function()
         {
             $scope.Selected = $('#DropDown2 option:selected').val();
-            if($scope.Selected == 2)
-            {
+            if ($scope.Selected == 'رقم 2 (أحد الوالدن أصل وفصل)') {
                 $('#Div2').show();
                 $('#Div5').hide();
             }
-            else if ($scope.Selected == 5)
+            else if ($scope.Selected == 'غير ذلك')
             {
                 $('#Div2').hide();
                 $('#Div5').show();
@@ -108,52 +161,48 @@ angular.module("myApp")
 
 
         $scope.Register = function () {
-            var fd = new FormData();
+      
 
-            fd.append('gender',$scope.gender);
-            fd.append('fullname',$scope.full_name);
-            fd.append('country',$scope.country);
-            fd.append('passport_id',$scope.passport_id);
-            fd.append('passport_expire',$scope.passport_expire);
-
-            fd.append('height',parseInt($scope.height));
-            fd.append('weight',parseInt($scope.weight));
-            fd.append('race',$scope.race);
-            fd.append('race2',$scope.race2);
-            fd.append('race3',$scope.race3);
-            fd.append('education',$scope.education);
-            fd.append('employee',$scope.employee);
-
-            fd.append('skin_color',$scope.skin_color);
-            fd.append('religion',$scope.religion);
-            fd.append('smoker',$scope.smoker);
-            fd.append('finance',$scope.finance);
-            fd.append('finance_alt',$scope.finance_alt);
-            fd.append('body_shape',$scope.body_shape);
-            fd.append('location_ftr_mrg',$scope.location_ftr_mrg);
-            fd.append('marriage_type',$scope.marriage_type);
-            fd.append('marital_status',$scope.marital_status);
-            fd.append('characteristic_of_marriage',$scope.characteristic_of_marriage);
-            fd.append('mult_marriage',$scope.mult_marriage);
-            fd.append('num_sone',$scope.num_sone);
-
-            fd.append('email',$scope.email);
-            fd.append('phone',$scope.phone);
-            fd.append('password',$scope.password);
-            fd.append('self_bio',$scope.self_bio);
-            fd.append('part_bio',$scope.part_bio);
-            fd.append('profile-photo',$scope.img_src);
-
-
-            $http.post(API_URL+"Users", fd, {
-            transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
+            $http.post(API_URL + "Users", {
+                gender: $scope.gender,
+                fullname: $scope.fullname,
+                country: $scope.country,
+                passport_id : $scope.passport_id,
+                passport_expire: $scope.passport_expire,
+                height: $scope.height,
+                weight: $scope.weight,
+                race: $scope.race,
+                race2: $scope.race2,
+                race3: $scope.race3,
+                education: $scope.education,
+                employee: $scope.employee,
+                skin_color: $scope.skin_color,
+                religion: $scope.religion,
+                smoker : $scope.smoker,
+                finance: $scope.finance,
+                finance_alt : $scope.finance_alt,
+                body_shape: $scope.body_shape,
+                location_ftr_mrg: $scope.location_ftr_mrg,
+                marriage_type: $scope.marriage_type,
+                marital_status: $scope.marital_status,
+                characteristic_of_marriage: $scope.characteristic_of_marriage,
+                mult_marriage: $scope.mult_marriage,
+                num_sone: $scope.num_sone,
+                email: $scope.email,
+                phone: $scope.phone,
+                password: $scope.password,
+                self_bio: $scope.self_bio,
+                part_bio: $scope.part_bio,
+                profile_photo : $scope.display_url
             })
             .then(function(res){
-                    console.log(res);
+                console.log(res);
             })
             
         }
         
+        
+
+
         
     })
