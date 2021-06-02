@@ -8,7 +8,7 @@
                     <div class="container">
                         <div class="tabs-wrapper">
                             <div class="row">
-                                <div class="col tabs-header d-flex align-items-end" ng-init="tab='tab-body-4'">
+                                <div class="col tabs-header d-flex align-items-end" ng-init="tab='tab-body-1'">
                                     <div class="tab-trigger-wrapper">
                                         <h5 class="tab-trigger {{ tab=='tab-body-1'?'active':'' }}" id="FristTab">البيانات الأساسية</h5>
                                     </div>
@@ -31,10 +31,41 @@
                                     <div class="contact-form-white d-flex flex-column align-items-center element-form-left">
                                         <div class="row">
                                             <div class="col-lg-6 Man">
-                                                <p style="text-align:right"> أختر صورة من الجهاز</p>
-                                                <img id="blah" src="{{img_src ? img_src : './img/default-user-avatar.jpg'}}" alt="your image" style="width:150px;border: 2px solid white;margin: 0 0 0 40%;" />
-                                                <input type="file" id="file"  class="input-small"  onchange="angular.element(this).scope().previewPhoto()" />
+                                                <p style="text-align:right" class="mb-3"> أختر صورة من الجهاز</p>
+
+
+                                                  
+                                                    <div class="dropzone">
+                                                        <div class="info">
+                                                            <img  ngf-thumbnail="picFile" class="img-prev" id="preview" src="./img/default-user-avatar.jpg" alt="your image" title='' />
+                                                        </div>
+                                                    </div>
+                                                        <div class="clear-image fadeIn" ng-show="delete_url"> 
+                                                            <i class="fa fa-trash"></i>
+                                                        </div>
+                                                    
+
+                                                <!-- <div class="col-md-3">
+                                                    <div id='img_container' style="width: 200%">
+                                                        <img  ngf-thumbnail="picFile" id="preview" src="./img/default-user-avatar.jpg" alt="your image" title='' style="    width: 130px;border: 2px solid white;margin: 0 0 0 40%;margin-bottom: 13px;height: 90px;border-radius: 13px;" />
+                                                    </div> 
+                                                </div> -->
+                                                <div class="input-group"> 
+                                                    <div class="custom-file">
+                                                    <input type="file" ngf-select ng-model="picFile" name="file2"  onchange="angular.element(this).scope().test(this.files[0])"
+                                                    accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile" id="inputGroupFile01" class="imgInp input-small" aria-describedby="inputGroupFileAddon01">
+                                                    <i ng-show="myForm.file2.$error.maxSize" class="fa fa-info">File too large 
+                                                        {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                                                    </div>
+                                                </div>
+                                                <span class="progress" ng-show="progress >= 0">
+                                                    <div style="width:{{ progress }}%" ng-bind="progress + '%'"></div>
+                                                </span>
+                                                <!-- <button type="button"  ng-click="test(picFile)" class="btn droid-arabic-kufi mt-20">upload</button> -->
+
                                             </div>
+
+                                          
 
                                             <div class="col-lg-6 Man">
                                                 <p style="text-align:right">   أختر الشكل المناسب</p>
@@ -133,7 +164,7 @@
 
                                         <div class="row">
                                             <button style="font-size: 17px;" class="button-submit" type="button" ng-click="tab='tab-body-3'"> الخطوة السابقة</button>
-                                            <button style="font-size: 17px;" class="button-submit" type="submit">  أنهاء التسجيل</button>
+                                            <button style="font-size: 17px;" class="button-submit" type="submit" ng-click="Register()">  أنهاء التسجيل</button>
                                         </div>
                                     </div>
                                 </div>
@@ -146,10 +177,10 @@
                                                 <select class="form-control input-small {{myForm.v_skin_color.$error.required && myForm.v_skin_color.$touched ?'border-danger':''}}"  name="v_skin_color" ng-model="skin_color" required>
                                                     <option selected disabled value="">لون البشرة</option>
                                                     <option value="أبيض">  أبيض</option>
-                                                    <option>  أبيض على إحمرار</option>
-                                                    <option>   حنطي فاتح </option>
-                                                    <option>   حنطي على أسمرار</option>
-                                                    <option> أسمر داكن</option>
+                                                    <option value="أبيض على إحمرار">  أبيض على إحمرار</option>
+                                                    <option value="حنطي فاتح">   حنطي فاتح </option>
+                                                    <option value="حنطي على أسمرار">   حنطي على أسمرار</option>
+                                                    <option value="أسمر داكن"> أسمر داكن</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_skin_color.$error.required && myForm.v_skin_color.$touched">الرجاء تحديد لون البشرة      </div>
                                             </div>
@@ -158,9 +189,9 @@
                                                 <select class="form-control input-small {{myForm.v_religion.$error.required && myForm.v_religion.$touched ?'border-danger':''}}" name="v_religion" ng-model="religion" required>
                                                     <option selected disabled value="">العقيدة</option>
                                                     <option value="أباضي">  أباضي</option>
-                                                    <option> سني</option>
-                                                    <option>  شيعي</option>
-                                                    <option>  غير ذلك</option>
+                                                    <option value="سني"> سني</option>
+                                                    <option value="شيعي">  شيعي</option>
+                                                    <option value="غير ذلك">  غير ذلك</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_religion.$error.required && myForm.v_religion.$touched">الرجاء تحديد العقيدة      </div>
                                             </div>
@@ -169,7 +200,7 @@
                                                 <select class="form-control input-small {{myForm.v_smoker.$error.required && myForm.v_smoker.$touched ?'border-danger':''}}" name="v_smoker" ng-model="smoker" required>
                                                     <option selected disabled value="">هل تدخن</option>
                                                     <option value="نعم">  نعم</option>
-                                                    <option> لا</option>
+                                                    <option value="لا"> لا</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_smoker.$error.required && myForm.v_smoker.$touched">الرجاء تحديد هل تدخن     </div>
                                             </div>
@@ -178,11 +209,11 @@
                                                 <select class="form-control input-small {{myForm.v_finance.$error.required && myForm.v_finance.$touched ?'border-danger':''}}" name="v_finance" ng-model="finance" required>
                                                     <option selected disabled value="">الوضع المادي</option>
                                                     <option value="ضعيف">  ضعيف</option>
-                                                    <option> جيد</option>
-                                                    <option> جيد جدا</option>
-                                                    <option> ممتاز</option>
-                                                    <option> ممتاز جدا</option>
-                                                    <option> لايوجد</option>
+                                                    <option value="جيد"> جيد</option>
+                                                    <option value="جيد جدا"> جيد جدا</option>
+                                                    <option value="ممتاز"> ممتاز</option>
+                                                    <option value="ممتاز جدا"> ممتاز جدا</option>
+                                                    <option value="لا يوجد"> لا يوجد</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_finance.$error.required && myForm.v_finance.$touched">الرجاء تحديد الوضع المادي    </div>
                                             </div>
@@ -191,7 +222,7 @@
                                                 <select class="form-control input-small {{myForm.v_finance_alt.$error.required && myForm.v_finance_alt.$touched ?'border-danger':''}}" name="v_finance_alt" ng-model="finance_alt" required>
                                                     <option selected disabled value="">هل يوجد مصدر أخر للدخل المادي</option>
                                                     <option value="نعم">  نعم</option>
-                                                    <option> لا</option>
+                                                    <option value="لا"> لا</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_finance_alt.$error.required && myForm.v_finance_alt.$touched">الرجاء تحديد مصدر الدخل     </div>
                                             </div>
@@ -200,13 +231,13 @@
                                                 <select class="form-control input-small {{myForm.v_body_shape.$error.required && myForm.v_body_shape.$touched ?'border-danger':''}}" name="v_body_shape" ng-model="body_shape" required>
                                                     <option selected disabled value="">البنية الجسمية</option>
                                                     <option value="ضعيف">  ضعيف</option>
-                                                    <option> رشيق</option>
-                                                    <option> رياضي</option>
-                                                    <option> وزن زائد </option>
-                                                    <option> ضخم</option>
-                                                    <option> سمين</option>
-                                                    <option> جسم غير متناسق مع الطول</option>
-                                                    <option> غير ذلك</option>
+                                                    <option value="رشيق"> رشيق</option>
+                                                    <option value="رياضي"> رياضي</option>
+                                                    <option value=" وزن زائد"> وزن زائد </option>
+                                                    <option value="ضخم"> ضخم</option>
+                                                    <option value="سمين"> سمين</option>
+                                                    <option value="جسم غير متناسق مع الطول"> جسم غير متناسق مع الطول</option>
+                                                    <option value="غير ذلك"> غير ذلك</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_body_shape.$error.required && myForm.v_body_shape.$touched">الرجاء تحديد البنية الجسمية   </div>
                                             </div>
@@ -215,10 +246,10 @@
                                                 <select class="form-control input-small {{myForm.location_ftr_mrg.$error.required && myForm.location_ftr_mrg.$touched ?'border-danger':''}}" name="v_location_ftr_mrg" ng-model="location_ftr_mrg" required>
                                                     <option selected disabled value="">بعد الزواج سأسكن</option>
                                                     <option value="مستقل">  مستقل</option>
-                                                    <option> في ملحق</option>
-                                                    <option>  منزل خاص</option>
-                                                    <option>   مع العائلة</option>
-                                                    <option>  لا أمانع</option>
+                                                    <option value="في ملحق"> في ملحق</option>
+                                                    <option value="منزل خاص">منزل خاص</option>
+                                                    <option value="مع العائلة">   مع العائلة</option>
+                                                    <option value="لا أمانع">  لا أمانع</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_location_ftr_mrg.$error.required && myForm.v_location_ftr_mrg.$touched">الرجاء تحديد طريقة الزواج  </div>
                                             </div>
@@ -228,8 +259,8 @@
                                                 <select class="form-control input-small {{myForm.v_marriage_type.$error.required && myForm.v_marriage_type.$touched ?'border-danger':''}}" name="v_marriage_type" ng-model="marriage_type" required>
                                                     <option selected disabled value="">  طريقة الزواج</option>
                                                     <option value="عن طريق النظرة الشرعيه فقط">  عن طريق النظرة الشرعيه فقط</option>
-                                                    <option> عن طريق التعارف المسبق أولا</option>
-                                                    <option>كل ماسبق</option>
+                                                    <option value="عن طريق التعارف المسبق أولا"> عن طريق التعارف المسبق أولا</option>
+                                                    <option value="كل ماسبق">كل ماسبق</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_marriage_type.$error.required && myForm.v_marriage_type.$touched">الرجاء تحديد طريقة الزواج  </div>
                                             </div>
@@ -238,9 +269,9 @@
                                                 <select class="form-control input-small {{myForm.v_marital_status.$error.required && myForm.v_marital_status.$touched ?'border-danger':''}}" id="SocialDropDown" name="v_marital_status" ng-model="marital_status" ng-change="SocialDropDownChanged()">
                                                     <option selected disabled value="">الحالة الإجتماعية</option>
                                                     <option value="أعزب">  أعزب</option>
-                                                    <option value="2"> متزوج</option>
-                                                    <option value="3"> مطلق</option>
-                                                    <option value="4" class="Woman" > أرملة</option>
+                                                    <option value="متزوج"> متزوج</option>
+                                                    <option value="مطلق"> مطلق</option>
+                                                    <option value="أرملة" class="Woman" > أرملة</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_marital_status.$error.required && myForm.v_marital_status.$touched">الرجاء تحديد  الحالة الاجتماعية </div>
                                             </div>
@@ -249,9 +280,9 @@
                                                 <select class="form-control Maried input-small {{myForm.v_characteristic_of_marriage.$error.required && myForm.v_characteristic_of_marriage.$touched ?'border-danger':''}}" style="display: none;" name="v_characteristic_of_marriage" ng-model="characteristic_of_marriage" required>
                                                     <option selected disabled value="">  صفة الزواج </option>
                                                     <option value="الأولى">  الأولى</option>
-                                                    <option> الثانية</option>
-                                                    <option> الثالثة</option>
-                                                    <option> أرملة</option>
+                                                    <option value="الثانية"> الثانية</option>
+                                                    <option value="الثالثة"> الثالثة</option>
+                                                    <option value="أرملة"> أرملة</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_characteristic_of_marriage.$error.required && myForm.v_characteristic_of_marriage.$touched">الرجاء تحديد  صفة الزواج</div>
                                             </div>
@@ -260,7 +291,7 @@
                                                 <select class="form-control Maried input-small" name="v_mult_marriage" ng-model="mult_marriage" style="display: none;" required>
                                                     <option selected disabled value="">ترغب في تعدد الزوجات</option>
                                                     <option value="نعم">  نعم</option>
-                                                    <option> لا</option>
+                                                    <option value="لا">لا </option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_mult_marriage.$error.required && myForm.v_mult_marriage.$touched">الرجاء تحديد خيار </div>
                                             </div>
@@ -298,13 +329,13 @@
                                             <div class="col-lg-6" ng-init="race='الأصل العرقي'">
                                                 <select class="form-control input-small {{myForm.v_race.$error.required && myForm.v_race.$touched ?'border-danger':''}}" id="DropDown2" name="v_race" ng-model="race" ng-change="ShowDiv2()" required>
                                                     <option selected disabled value="">الأصل العرقي</option>
-                                                    <option value="1"> رقم 1 (الوالدان أصل وفصل)</option>
-                                                    <option value="2"> رقم 2 (أحد الوالدن أصل وفصل)</option>
-                                                    <option value="3">  رقم 3 (الوالدان من البشرة السمراء)</option>
-                                                    <option value="4">  بيسر 1 (عرق مخلوط من نسل أبيض البشره)</option>
-                                                    <option value="6">بيسر 2 (عرق مخلوط من نسل أسمر البشره)</option>
-                                                    <option value="7">بيسر 3 (عرق مخلوط من نسل مخلوط البشره)</option>
-                                                    <option value="5">  غير ذلك</option>
+                                                    <option value="رقم 1 (الوالدان أصل وفصل)"> رقم 1 (الوالدان أصل وفصل)</option>
+                                                    <option value="رقم 2 (أحد الوالدن أصل وفصل)"> رقم 2 (أحد الوالدن أصل وفصل)</option>
+                                                    <option value="رقم 3 (الوالدان من البشرة السمراء)">  رقم 3 (الوالدان من البشرة السمراء)</option>
+                                                    <option value="بيسر 1 (عرق مخلوط من نسل أبيض البشره)">  بيسر 1 (عرق مخلوط من نسل أبيض البشره)</option>
+                                                    <option value="بيسر 2 (عرق مخلوط من نسل أسمر البشره)">بيسر 2 (عرق مخلوط من نسل أسمر البشره)</option>
+                                                    <option value="بيسر 3 (عرق مخلوط من نسل مخلوط البشره)">بيسر 3 (عرق مخلوط من نسل مخلوط البشره)</option>
+                                                    <option value="غير ذلك">  غير ذلك</option>
                                                 </select>
                                                 <div class="text-danger text-right validate" ng-if="myForm.v_race.$error.required && myForm.v_race.$touched">الرجاء تحديد الاصل العرقي</div>
                                             </div>
@@ -336,7 +367,7 @@
                                                     <option value="بكالوريوس">  بكالوريوس</option>
                                                     <option value="دبلوم جامعي">  دبلوم جامعي</option>
                                                     <option value="دبلوم عام">   دبلوم عام</option>
-                                                    <option value="ثانوية">  </option>
+                                                    <option value="ثانوية"> ثانوية </option>
                                                     <option value="إعدادية">  إعدادية</option>
                                                     <option value="غير ذلك">  غير ذلك</option>
                                                 </select>
@@ -398,16 +429,16 @@
                                                             <option value="الجمهوريّة اليمنيّة">الجمهوريّة اليمنيّة</option>
                                                             <option value="دولة ليبيا">دولة ليبيا</option>
                                                             <option value="المملكة الأردنيّة الهاشميّة">المملكة الأردنيّة الهاشميّة</option>
-                                                            <option>دولة الإمارات العربيّة المتّحدة</option>
-                                                            <option>الجمهوريّة اللبنانيّة</option>
-                                                            <option>الجمهوريّة الإسلاميّة الموريتانيّة</option>
-                                                            <option>دولة الكويت</option>
-                                                            <option>سطنة عُمان</option>
-                                                            <option>دولة قطر</option>
-                                                            <option>جمهوريّة جيبويتي</option>
-                                                            <option>مملكة البحرين</option>
-                                                            <option>جمهوريّة القمر الاتّحاديّة الإسلاميّة</option>
-                                                            <option>دولة فلسطين المحتلّة</option>
+                                                            <option value="دولة الإمارات العربيّة المتّحدة">دولة الإمارات العربيّة المتّحدة</option>
+                                                            <option value="الجمهوريّة اللبنانيّة">الجمهوريّة اللبنانيّة</option>
+                                                            <option value="الجمهوريّة الإسلاميّة الموريتانيّة">الجمهوريّة الإسلاميّة الموريتانيّة</option>
+                                                            <option value="دولة الكويت">دولة الكويت</option>
+                                                            <option value="سطنة عُمان">سطنة عُمان</option>
+                                                            <option value="دولة قطر">دولة قطر</option>
+                                                            <option value="جمهوريّة جيبويتي">جمهوريّة جيبويتي</option>
+                                                            <option value="مملكة البحرين">مملكة البحرين</option>
+                                                            <option value="جمهوريّة القمر الاتّحاديّة الإسلاميّة">جمهوريّة القمر الاتّحاديّة الإسلاميّة</option>
+                                                            <option value="دولة فلسطين المحتلّة">دولة فلسطين المحتلّة</option>
                                                         </select>
                                                         <div class="text-danger text-right validate" ng-if="myForm.v_country.$error.required && myForm.v_country.$touched">يجب اختيار الدولة</div>
                                                     </div>

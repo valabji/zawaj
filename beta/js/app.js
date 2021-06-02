@@ -5,7 +5,7 @@ String.prototype.isNumber = String.prototype.isNumber ||
     };
 
 
-angular.module("myApp",['ngAnimate', 'ngSanitize', 'ui.bootstrap','ui.router','angularUtils.directives.dirPagination'])
+angular.module("myApp",['ngAnimate', 'ngSanitize', 'ui.bootstrap','ui.router','angularUtils.directives.dirPagination','ngFileUpload'])
     .config(function ($stateProvider,$urlRouterProvider,$httpProvider,USER_ROLES) {
 
         $stateProvider
@@ -194,7 +194,7 @@ angular.module("myApp",['ngAnimate', 'ngSanitize', 'ui.bootstrap','ui.router','a
             
 
      
-        // $urlRouterProvider.otherwise("/app/home");
+        $urlRouterProvider.otherwise("/app/home");
         // $httpProvider.defaults.headers.post['Content-Type'] = 'application/json'
         // $httpProvider.defaults.useXDomain = true;
     })
@@ -227,13 +227,31 @@ angular.module("myApp",['ngAnimate', 'ngSanitize', 'ui.bootstrap','ui.router','a
     })
 
 
-    .constant('API_URL', 'https://api.zwajni.com/')
+    .constant('API_URL', 'https://zwajni.com/api/')
 
-    .service("$st",function ($rootScope,$state) {
+    .service("$st",function ($rootScope,$state,$http) {
        
-        // this.err=function () {
+        // this.uplaod=function () {
+            
+        // }
+
+        // this.remove=function () {
         //     toastr.warning('لا يوجد اتصال بالانترنت', {timeOut: 5000})
         // }
+
+    })
+
+
+    .service("$UploadService",function ($rootScope,$state,$http) {
+       
+        this.uplaod=function () {
+            
+        }
+
+        this.remove=function (delete_url) {
+            let new_window = open(delete_url, '_blank');
+            // new_window.close();
+        }
 
     })
     

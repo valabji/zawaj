@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module("myApp")
-    .controller("appCtrl",function ($scope,$rootScope,$http,$timeout,$uibModal,$state,$st,Auth,API_URL, AUTH_EVENTS, USER_ROLES,$window) {
+    .controller("appCtrl",function ($scope,$rootScope,$http,$timeout,$uibModal,$state,Auth,API_URL, AUTH_EVENTS, USER_ROLES,$window) {
 
 
     
