@@ -76,12 +76,12 @@ angular.module("myApp",['ngAnimate', 'ngSanitize', 'ui.bootstrap','ui.router','a
                 }
             })
 
-            .state("app.assembly_items",{
-                url:"/assembly_items",
+            .state("app.SearchResult",{
+                url:"/SearchResult",
                 views:{
                     "sub":{
-                        templateUrl:"templates/assembly_items.html",
-                        controller:"assembly_itemsCtrl"
+                        templateUrl:"templates/SearchResult.html",
+                        controller:"SearchResultCtrl"
                     }
                 }
             })

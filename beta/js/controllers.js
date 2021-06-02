@@ -7,8 +7,16 @@ angular.module("myApp")
 
     
     $scope.setCurrentUser = function(){
-            $scope.currentUser = $rootScope.currentUser;
-        }
+        $scope.currentUser = $rootScope.currentUser;
+    }
+        
+    $rootScope.search = function () {
+        $http.get("https://zwajni.com/api/users/search?gender=female&age_max=40")
+            .then(function (resp) {
+                $rootScope.SearchResult = resp.data.data
+                $state.go('app.SearchResult')
+            })
+    }
         
     $scope.showNotAuthorized = function(){
             // alert("Not Authorized");
